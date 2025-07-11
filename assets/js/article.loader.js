@@ -117,7 +117,7 @@ async function loadPopularArticles() {
   const itemsPerRow = getArticlesPerRow();
   const params = new URLSearchParams(window.location.search);
   const theme = params.get("theme");
-  const url = theme ? `/api/random_articles?theme=${encodeURIComponent(theme)}` : "/api/random_articles";
+  const url = theme ? `https://seo-site-backend-production.up.railway.app/api/random_articles?theme=${encodeURIComponent(theme)}` : "https://seo-site-backend-production.up.railway.app/api/random_articles";
 
   try {
     const res = await fetch(url);
@@ -157,7 +157,7 @@ async function loadRecentArticles() {
   const itemsPerRow = getArticlesPerRow();
 
   try {
-    const res = await fetch("/api/recent_articles");
+    const res = await fetch("https://seo-site-backend-production.up.railway.app/api/recent_articles");
     if (!res.ok) throw new Error("Ошибка загрузки");
     const articles = await res.json();
     container.innerHTML = "";
@@ -184,7 +184,7 @@ async function loadRecentArticlesSidebar() {
   const container = document.getElementById("recent-articles");
   if (!container) return;
   try {
-    const res = await fetch("/api/recent_articles");
+    const res = await fetch("https://seo-site-backend-production.up.railway.app/api/recent_articles");
     if (!res.ok) throw new Error("Ошибка загрузки");
     const articles = await res.json();
     container.innerHTML = "";
@@ -208,7 +208,7 @@ async function loadSearchResults() {
   const itemsPerRow = getArticlesPerRow();
 
   try {
-    const res = await fetch(`/api/look_for_articles?q=${encodeURIComponent(query)}`);
+    const res = await fetch(`https://seo-site-backend-production.up.railway.app/api/look_for_articles?q=${encodeURIComponent(query)}`);
     if (!res.ok) throw new Error("Ошибка поиска");
 
     const articles = await res.json();
@@ -244,7 +244,7 @@ async function loadSimilarArticles() {
   const slug = getSlugFromPath();
   if (!slug) return;
   try {
-    const res = await fetch(`/api/similar_articles?slug=${encodeURIComponent(slug)}`);
+    const res = await fetch(`https://seo-site-backend-production.up.railway.app/api/similar_articles?slug=${encodeURIComponent(slug)}`);
     if (!res.ok) throw new Error("Не удалось загрузить похожие статьи");
     const articles = await res.json();
     container.innerHTML = "";
@@ -264,7 +264,7 @@ async function loadSimilarArticles() {
 // === Загрузка тем ===
 async function loadThemes() {
   try {
-    const res = await fetch("/api/themes");
+    const res = await fetch("https://seo-site-backend-production.up.railway.app/api/themes");
     if (!res.ok) throw new Error("Темы не получены");
     const themes = await res.json();
     const menu = document.getElementById("menu-items") || document.querySelector("#menu ul");
