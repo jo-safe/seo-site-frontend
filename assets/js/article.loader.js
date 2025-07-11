@@ -40,7 +40,7 @@ function createStandardArticleBlock(a, withAd = true) {
   const article = document.createElement("article");
 
   const link = document.createElement("a");
-  link.href = `/static/articles/${a.slug}.html`;
+  link.href = `/articles/${a.slug}.html`;
   link.className = "image";
   link.innerHTML = `<img src="${a.image}" alt="">`;
 
@@ -54,7 +54,7 @@ function createStandardArticleBlock(a, withAd = true) {
   actions.className = "actions";
   const li = document.createElement("li");
   const btn = document.createElement("a");
-  btn.href = `/static/articles/${a.slug}.html`;
+  btn.href = `/articles/${a.slug}.html`;
   btn.className = "button";
   btn.textContent = "Читать";
   li.appendChild(btn);
@@ -271,7 +271,7 @@ async function loadThemes() {
     themes.forEach(t => {
       const li = document.createElement("li");
       const a = document.createElement("a");
-      a.href = `/static/index.html?theme=${encodeURIComponent(t.slug)}`;
+      a.href = `/index.html?theme=${encodeURIComponent(t.slug)}`;
       a.textContent = `Статьи по теме: ${t.name}`;
       li.appendChild(a);
       menu.appendChild(li);
