@@ -320,7 +320,6 @@ function loadFooterAd() {
 document.addEventListener("DOMContentLoaded", () => {
   loadThemes();
   loadFooterAd();
-  loadDynamicAd();
   loadRecentArticlesSidebar();
 
   const bodyId = document.body.id;
