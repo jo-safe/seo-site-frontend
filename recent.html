@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Свежие статьи</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="/static/assets/css/main.css" />
+</head>
+<body class="is-preload" id="recent-page">
+
+  <!-- Wrapper -->
+  <div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+
+        <!-- Header -->
+        <header id="header">
+          <a href="/static/index.html" class="logo"><strong id="site-name">Название сайта</strong></a>
+          <ul class="icons">
+            <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+            <li><a href="#" class="icon brands fa-telegram"><span class="label">Telegram</span></a></li>
+            <li><a href="#" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
+            <li><a href="#" class="icon brands fa-tiktok"><span class="label">TikTok</span></a></li>
+          </ul>
+        </header>
+
+        <!-- Section -->
+        <section>
+          <header class="major">
+            <h2>Свежие статьи</h2>
+          </header>
+          <div id="article-container">
+            <p>Загрузка свежих статей...</p>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <div class="inner">
+
+        <!-- Поиск -->
+        <section id="search" class="alt">
+          <form method="get" action="/static/search.html" id="search-form">
+		  		  <input type="text" name="q" id="query" placeholder="Поиск по статьям" autocomplete="off" required />
+			    </form>
+        </section>
+
+        <!-- Меню -->
+        <nav id="menu">
+          <header class="major"><h2>Меню</h2></header>
+          <ul id="menu-items">
+            <li><a href="/static/index.html">Популярные статьи</a></li>
+            <li><a href="/static/recent.html">Свежие статьи</a></li>
+          </ul>
+        </nav>
+
+        <!-- Реклама -->
+        <section id="sidebar-ad">
+          <div class="adblock">
+            Здесь могла быть ваша реклама
+          </div>
+        </section>
+
+        <!-- Свежие статьи -->
+        <section>
+          <header class="major"><h2>Свежие статьи</h2></header>
+          <div class="mini-posts" id="recent-articles"></div>
+          <ul class="actions"><li><a href="/static/recent.html" class="button">Больше новинок</a></li></ul>
+        </section>
+
+        <!-- Футер -->
+        <footer id="footer">
+          <div class="adblock" id="footer-ad">Реклама footer (загружается)...</div>
+        </footer>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="/static/assets/js/jquery.min.js"></script>
+  <script src="/static/assets/js/browser.min.js"></script>
+  <script src="/static/assets/js/breakpoints.min.js"></script>
+  <script src="/static/assets/js/util.js"></script>
+  <script src="/static/assets/js/main.js"></script>
+  <script src="/static/assets/js/article.loader.js"></script>
+
+  <script>
+    // Переход на страницу поиска при отправке формы
+    function onSearchSubmit(event) {
+      event.preventDefault();
+      const query = document.getElementById("query").value.trim();
+      if (query.length === 0) return false;
+      // Перенаправляем на страницу поиска с параметром q
+      window.location.href = `/static/search.html?q=${encodeURIComponent(query)}`;
+      return false;
+    }
+  </script>
+
+</body>
+</html>
