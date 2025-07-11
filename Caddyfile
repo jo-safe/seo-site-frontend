@@ -1,5 +1,7 @@
 :80
 
-root * /app
-
-file_server browse
+handle_path / {
+	root * /app
+	try_files {path} {path}/index.html index.html
+	file_server
+}
