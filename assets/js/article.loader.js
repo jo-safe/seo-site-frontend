@@ -282,8 +282,6 @@ async function loadThemes() {
 }
 
 function insertAdBlocksInArticle() {
-  if (document.body.id !== "article-page") return;
-
   const container = document.querySelector("#article-content");
   if (!container) return;
 
@@ -310,16 +308,10 @@ function insertAdBlocksInArticle() {
   });
 }
 
-function loadFooterAd() {
-  const block = document.getElementById("footer-ad");
-  if (block) block.textContent = "Здесь могла бы быть ваша реклама (footer)";
-}
-
 
 // === Запуск ===
 document.addEventListener("DOMContentLoaded", () => {
   loadThemes();
-  loadFooterAd();
   loadRecentArticlesSidebar();
 
   const bodyId = document.body.id;
