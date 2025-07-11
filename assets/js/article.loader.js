@@ -281,6 +281,41 @@ async function loadThemes() {
   }
 }
 
+function insertAdBlocksInArticle() {
+  if (document.body.id !== "article-page") return;
+
+  const container = document.querySelector("#article-content");
+  if (!container) return;
+
+  const headings = container.querySelectorAll("h2");
+  if (!headings.length) return;
+
+  headings.forEach((h2, index) => {
+    const adBlock = document.createElement("div");
+    adBlock.className = "adblock";
+    adBlock.textContent = "Реклама (заглушка)";
+    adBlock.style.cssText = `
+      background: #f0f0f0;
+      padding: 10px;
+      margin: 20px 0;
+      text-align: center;
+      font-weight: bold;
+      color: #555;
+      border: 1px dashed #aaa;
+      border-radius: 6px;
+    `;
+
+    // Вставляем блок перед каждым h2
+    h2.parentNode.insertBefore(adBlock, h2);
+  });
+}
+
+function loadFooterAd() {
+  const block = document.getElementById("footer-ad");
+  if (block) block.textContent = "Здесь могла бы быть ваша реклама (footer)";
+}
+
+
 // === Запуск ===
 document.addEventListener("DOMContentLoaded", () => {
   loadThemes();
@@ -304,20 +339,8 @@ document.addEventListener("DOMContentLoaded", () => {
       break;
     case "article-page":
       loadSimilarArticles();
+      insertAdBlocksInArticle();
       break;
   }
   loadSiteName();
 });
-
-function loadDynamicAd() {
-  const block = document.getElementById("dynamic-ad-bottom");
-  if (!block) return;
-  setTimeout(() => {
-    block.innerHTML = '<iframe src="https://example.com/ad.html" style="width:100%;height:100px;border:none;"></iframe>';
-  }, 1500);
-}
-
-function loadFooterAd() {
-  const block = document.getElementById("footer-ad");
-  if (block) block.textContent = "Здесь могла бы быть ваша реклама (footer)";
-}
