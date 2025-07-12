@@ -16,6 +16,13 @@ const themeNames = {
 const BASE_FONT_SIZE = parseFloat(getComputedStyle(document.documentElement).fontSize);
 const ARTICLE_MIN_WIDTH_REM = 26; // Минимальная ширина статьи в rem
 
+let popularArticles = [];
+let renderedIndex = 0;
+const BLOCK_BATCH_COUNT = 5;
+
+let similarArticles = [];
+let similarRenderedIndex = 0;
+
 function getArticlesPerRow() {
   const container = document.getElementById("article-container") || document.body;
   const containerWidth = container.clientWidth;
@@ -117,36 +124,72 @@ async function loadPopularArticles() {
   const itemsPerRow = getArticlesPerRow();
   const params = new URLSearchParams(window.location.search);
   const theme = params.get("theme");
-  const url = theme ? `https://seo-site-backend-production.up.railway.app/api/random_articles?theme=${encodeURIComponent(theme)}` : "https://seo-site-backend-production.up.railway.app/api/random_articles";
+  const url = theme
+    ? `https://seo-site-backend-production.up.railway.app/api/random_articles?theme=${encodeURIComponent(theme)}&count=${itemsPerRow*BLOCK_BATCH_COUNT}`
+    : `https://seo-site-backend-production.up.railway.app/api/random_articles?count=${itemsPerRow*BLOCK_BATCH_COUNT}`;
 
   try {
     const res = await fetch(url);
     if (!res.ok) throw new Error("Не удалось загрузить статьи");
-    const articles = await res.json();
+
+    popularArticles = await res.json();
     container.innerHTML = "";
+    renderedIndex = 0;
 
-    if (articles.length === 0) {
-      container.innerHTML = "<p>Статей по выбранной теме не найдено.</p>";
-      return;
-    }
-
-    for (let i = 0; i < articles.length; i += itemsPerRow) {
-      const row = document.createElement("div");
-      row.className = "posts";
-
-      for (let j = i; j < i + itemsPerRow && j < articles.length; j++) {
-        const a = articles[j];
-        const block = createStandardArticleBlock(a, true); // статья + реклама
-        row.appendChild(block);
-      }
-
-      container.appendChild(row);
-    }
+    renderNextPopularBlocks(container, itemsPerRow);
   } catch (err) {
     console.error("Ошибка при загрузке статей:", err);
     container.innerHTML = "<p>Ошибка загрузки статей</p>";
   }
 }
+
+function renderNextPopularBlocks(container, itemsPerRow) {
+  const total = popularArticles.length;
+  const start = renderedIndex;
+  const end = Math.min(total, renderedIndex + (itemsPerRow * BLOCK_BATCH_COUNT));
+
+  // Удалим старую кнопку
+  const oldButton = document.getElementById("load-more");
+  if (oldButton) oldButton.remove();
+
+  // Отрисовываем пачками
+  for (let i = start; i < end; i += itemsPerRow) {
+    const row = document.createElement("div");
+    row.className = "posts";
+
+    for (let j = i; j < i + itemsPerRow && j < end; j++) {
+      const block = createStandardArticleBlock(popularArticles[j], true);
+      row.appendChild(block);
+    }
+
+    container.appendChild(row);
+  }
+
+  renderedIndex = end;
+
+  if (renderedIndex < total) {
+    insertLoadMoreButton(container, () => {
+      renderNextPopularBlocks(container, itemsPerRow);
+    });
+  }
+}
+
+function insertLoadMoreButton(container, onClick) {
+  const wrapper = document.createElement("div");
+  wrapper.style.textAlign = "center";
+  wrapper.style.margin = "2rem 0";
+
+  const btn = document.createElement("button");
+  btn.id = "load-more";
+  btn.className = "button";
+  btn.textContent = "Загрузить ещё";
+
+  btn.addEventListener("click", onClick);
+
+  wrapper.appendChild(btn);
+  container.appendChild(wrapper);
+}
+
 
 
 // === Загрузка свежих ===
@@ -238,28 +281,44 @@ async function loadSearchResults() {
 
 
 // === Похожие статьи ===
+function renderSimilarBatch() {
+  const container = document.getElementById("similar-articles");
+  if (!container) return;
+
+  const end = Math.min(similarRenderedIndex + BATCH_SIZE, similarArticles.length);
+  for (let i = similarRenderedIndex; i < end; i++) {
+    const block = createStandardArticleBlock(similarArticles[i], true);
+    container.appendChild(block);
+  }
+  similarRenderedIndex = end;
+
+  if (similarRenderedIndex >= similarArticles.length) {
+    const btn = document.getElementById("load-more");
+    if (btn) btn.remove();
+  }
+}
+
 async function loadSimilarArticles() {
   const container = document.getElementById("similar-articles");
   if (!container) return;
   const slug = getSlugFromPath();
   if (!slug) return;
+
   try {
     const res = await fetch(`https://seo-site-backend-production.up.railway.app/api/similar_articles?slug=${encodeURIComponent(slug)}`);
     if (!res.ok) throw new Error("Не удалось загрузить похожие статьи");
-    const articles = await res.json();
+
+    similarArticles = await res.json();
     container.innerHTML = "";
-    if (articles.length === 0) {
-      container.innerHTML = "<p>Похожие статьи не найдены.</p>";
-      return;
-    }
-    articles.forEach(a => {
-      const block = createStandardArticleBlock(a, true);
-      container.appendChild(block);
-    });
+
+    renderSimilarBatch();
+    insertLoadMoreButton(container, renderSimilarBatch);
+
   } catch (err) {
     console.warn("Ошибка загрузки похожих статей:", err);
   }
 }
+
 
 // === Загрузка тем ===
 async function loadThemes() {
@@ -334,4 +393,30 @@ document.addEventListener("DOMContentLoaded", () => {
       break;
   }
   loadSiteName();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const loadMoreBtn = document.getElementById("load-more");
+  if (!loadMoreBtn) return;
+
+  loadMoreBtn.addEventListener("click", async () => {
+    loadMoreBtn.disabled = true;
+    loadMoreBtn.textContent = "Загрузка...";
+
+    try {
+      const newArticles = await fetchMoreArticles(); // твоя функция
+      renderArticles(newArticles); // отрисуй
+
+      if (!hasMoreArticles()) {
+        loadMoreBtn.style.display = "none"; // Спрячь, если больше нечего грузить
+      } else {
+        loadMoreBtn.disabled = false;
+        loadMoreBtn.textContent = "Загрузить ещё";
+      }
+    } catch (e) {
+      console.error("Ошибка при загрузке статей", e);
+      loadMoreBtn.disabled = false;
+      loadMoreBtn.textContent = "Попробовать ещё раз";
+    }
+  });
 });
