@@ -16,9 +16,9 @@ const themeNames = {
 const BASE_FONT_SIZE = parseFloat(getComputedStyle(document.documentElement).fontSize);
 const ARTICLE_MIN_WIDTH_REM = 26; // Минимальная ширина статьи в rem
 
-let popularArticles = []; // Все загруженные статьи
-let renderedIndex = 0; // Сколько уже отрисовали
-const BATCH_SIZE = 5;
+let popularArticles = [];
+let renderedIndex = 0;
+const BLOCK_BATCH_COUNT = 5;
 
 let similarArticles = [];
 let similarRenderedIndex = 0;
@@ -134,28 +134,26 @@ async function loadPopularArticles() {
 
     popularArticles = await res.json();
     container.innerHTML = "";
+    renderedIndex = 0;
 
-    if (popularArticles.length === 0) {
-      container.innerHTML = "<p>Статей по выбранной теме не найдено.</p>";
-      return;
-    }
-
-    renderNextPopularBatch(container, itemsPerRow);
-
-    insertLoadMoreButton(container, () => {
-      renderNextPopularBatch(container, itemsPerRow);
-    });
-
+    renderNextPopularBlocks(container, itemsPerRow);
   } catch (err) {
     console.error("Ошибка при загрузке статей:", err);
     container.innerHTML = "<p>Ошибка загрузки статей</p>";
   }
 }
 
-function renderNextPopularBatch(container, itemsPerRow) {
-  const end = Math.min(renderedIndex + BATCH_SIZE, popularArticles.length);
+function renderNextPopularBlocks(container, itemsPerRow) {
+  const total = popularArticles.length;
+  const start = renderedIndex;
+  const end = Math.min(total, renderedIndex + (itemsPerRow * BLOCK_BATCH_COUNT));
 
-  for (let i = renderedIndex; i < end; i += itemsPerRow) {
+  // Удалим старую кнопку
+  const oldButton = document.getElementById("load-more");
+  if (oldButton) oldButton.remove();
+
+  // Отрисовываем пачками
+  for (let i = start; i < end; i += itemsPerRow) {
     const row = document.createElement("div");
     row.className = "posts";
 
@@ -169,23 +167,27 @@ function renderNextPopularBatch(container, itemsPerRow) {
 
   renderedIndex = end;
 
-  if (renderedIndex >= popularArticles.length) {
-    const loadMoreBtn = document.getElementById("load-more");
-    if (loadMoreBtn) loadMoreBtn.remove();
+  if (renderedIndex < total) {
+    insertLoadMoreButton(container, () => {
+      renderNextPopularBlocks(container, itemsPerRow);
+    });
   }
 }
 
 function insertLoadMoreButton(container, onClick) {
+  const wrapper = document.createElement("div");
+  wrapper.style.textAlign = "center";
+  wrapper.style.margin = "2rem 0";
+
   const btn = document.createElement("button");
   btn.id = "load-more";
   btn.className = "button";
   btn.textContent = "Загрузить ещё";
 
-  btn.addEventListener("click", () => {
-    onClick();
-  });
+  btn.addEventListener("click", onClick);
 
-  container.appendChild(btn);
+  wrapper.appendChild(btn);
+  container.appendChild(wrapper);
 }
 
 
