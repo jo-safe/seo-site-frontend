@@ -125,13 +125,8 @@ async function loadPopularArticles() {
   const params = new URLSearchParams(window.location.search);
   const theme = params.get("theme");
   const url = theme
-<<<<<<< HEAD
     ? `https://seo-site-backend-production.up.railway.app/api/random_articles?theme=${encodeURIComponent(theme)}&count=${itemsPerRow*BLOCK_BATCH_COUNT}`
     : `https://seo-site-backend-production.up.railway.app/api/random_articles?count=${itemsPerRow*BLOCK_BATCH_COUNT}`;
-=======
-    ? `https://seo-site-backend-production.up.railway.app/api/random_articles?theme=${encodeURIComponent(theme)}`
-    : "https://seo-site-backend-production.up.railway.app/api/random_articles";
->>>>>>> origin/main
 
   try {
     const res = await fetch(url);
