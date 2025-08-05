@@ -347,10 +347,11 @@ function insertAdBlocksInArticle() {
   const headings = container.querySelectorAll("h2");
   if (!headings.length) return;
 
-  headings.forEach((h2, index) => {
+  // Создаём HTML-рекламный блок
+  function createAdBlock(text = "Реклама (заглушка)") {
     const adBlock = document.createElement("div");
     adBlock.className = "adblock";
-    adBlock.textContent = "Реклама (заглушка)";
+    adBlock.textContent = text;
     adBlock.style.cssText = `
       background: #f0f0f0;
       padding: 10px;
@@ -361,11 +362,20 @@ function insertAdBlocksInArticle() {
       border: 1px dashed #aaa;
       border-radius: 6px;
     `;
+    return adBlock;
+  }
 
-    // Вставляем блок перед каждым h2
+  // Вставляем перед каждым <h2>
+  headings.forEach((h2) => {
+    const adBlock = createAdBlock();
     h2.parentNode.insertBefore(adBlock, h2);
   });
+
+  // Вставляем один рекламный блок в конец
+  const finalAdBlock = createAdBlock("Реклама в конце статьи");
+  container.appendChild(finalAdBlock);
 }
+
 
 
 // === Запуск ===
