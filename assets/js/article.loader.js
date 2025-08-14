@@ -101,8 +101,8 @@ async function loadPageHeading() {
     heading.textContent = themeNames[theme];
     document.title = themeNames[theme];
   } else {
-    heading.textContent = "Популярные статьи";
-    document.title = "Популярные статьи";
+    heading.textContent = "Популярное";
+    document.title = "Популярное";
   }
 }
 
@@ -285,7 +285,7 @@ function renderSimilarBatch() {
   const container = document.getElementById("similar-articles");
   if (!container) return;
 
-  const end = Math.min(similarRenderedIndex + BATCH_SIZE, similarArticles.length);
+  const end = Math.min(similarRenderedIndex, similarArticles.length);
   for (let i = similarRenderedIndex; i < end; i++) {
     const block = createStandardArticleBlock(similarArticles[i], true);
     container.appendChild(block);
@@ -331,7 +331,7 @@ async function loadThemes() {
       const li = document.createElement("li");
       const a = document.createElement("a");
       a.href = `index.html?theme=${encodeURIComponent(t.slug)}`;
-      a.textContent = `Статьи по теме: ${t.name}`;
+      a.textContent = `${t.name}`;
       li.appendChild(a);
       menu.appendChild(li);
     });
