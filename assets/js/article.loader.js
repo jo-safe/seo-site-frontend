@@ -287,7 +287,7 @@ function renderSimilarBatch() {
   const container = document.getElementById("similar-articles");
   if (!container) return;
 
-  const end = Math.min(similarRenderedIndex, similarArticles.length);
+  const end = Math.min(similarRenderedIndex + getArticlesPerRow(), similarArticles.length);
   for (let i = similarRenderedIndex; i < end; i++) {
     const block = createStandardArticleBlock(similarArticles[i], true);
     container.appendChild(block);
