@@ -26,7 +26,7 @@ let similarArticles = [];
 let similarRenderedIndex = 0;
 
 function getArticlesPerRow() {
-  const container = document.getElementsById("header");
+  const container = document.getElementById("header");
   const containerWidth = container.clientWidth;
   const articleMinWidthPx = ARTICLE_MIN_WIDTH_REM * BASE_FONT_SIZE;
   return Math.max(1, Math.floor(containerWidth / articleMinWidthPx));
