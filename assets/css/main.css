@@ -28,7 +28,7 @@ body {
 /* Элементы блока */
 article, aside, footer, header, nav, section, main {
   display: block;
-  height: 300;
+  height: calc(50% - 1.5em);
 }
 
 /* Типографика */
