@@ -281,18 +281,24 @@ async function loadSearchResults() {
   }
 }
 
-
 // === Похожие статьи ===
 function renderSimilarBatch() {
   const container = document.getElementById("similar-articles");
   if (!container) return;
 
-  const end = Math.min(similarRenderedIndex + getArticlesPerRow(), similarArticles.length);
-  for (let i = similarRenderedIndex; i < end; i++) {
-    const block = createStandardArticleBlock(similarArticles[i], true);
-    container.appendChild(block);
+    // Отрисовываем пачками
+  for (let i = start; i < end; i += itemsPerRow) {
+    const row = document.createElement("div");
+    row.className = "posts";
+
+    const end = Math.min(similarRenderedIndex + getArticlesPerRow(), similarArticles.length);
+    for (let i = similarRenderedIndex; i < end; i++) {
+      const block = createStandardArticleBlock(similarArticles[i], true);
+      row.appendChild(block);
+    }
+    container.appendChild(row);
+    similarRenderedIndex = end;
   }
-  similarRenderedIndex = end;
 
   if (similarRenderedIndex >= similarArticles.length) {
     const btn = document.getElementById("load-more");
