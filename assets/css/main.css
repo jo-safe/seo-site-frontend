@@ -609,6 +609,7 @@ button.primary:active {
 
 .features article {
   display: flex;
+  height: 300;
   align-items: center;
   width: calc(50% - 1.5em);
 }
