@@ -134,8 +134,8 @@ async function loadPopularArticles() {
         .filter(id => id);
     
     const url = theme
-        ? `https://seo-site-backend-production.up.railway.app/api/random_articles?theme=${encodeURIComponent(theme)}&count=${itemsPerRow*BLOCK_BATCH_COUNT}&except_articles=${exceptArticles.join(',')}`
-        : `https://seo-site-backend-production.up.railway.app/api/random_articles?count=${itemsPerRow*BLOCK_BATCH_COUNT}&except_articles=${exceptArticles.join(',')}`;
+        ? `https://seo-site-backend-production.up.railway.app/api/random_articles?theme=${encodeURIComponent(theme)}&count=${itemsPerRow*BLOCK_BATCH_COUNT}${exceptArticles.length ? `&except_articles=${exceptArticles.join(',')}` : ''}`
+        : `https://seo-site-backend-production.up.railway.app/api/random_articles?count=${itemsPerRow*BLOCK_BATCH_COUNT}${exceptArticles.length ? `&except_articles=${exceptArticles.join(',')}` : ''}`;
     
     try {
         const res = await fetch(url);
