@@ -28,7 +28,6 @@ body {
 /* Элементы блока */
 article, aside, footer, header, nav, section, main {
   display: block;
-  height: calc(50% - 1.5em);
 }
 
 /* Типографика */
@@ -323,6 +322,7 @@ hr.major {
 .article-with-ad {
   display: flex;
   flex-direction: column;
+  height: calc(50% - 1.5em);
   margin-bottom: 2rem;
 }
 
