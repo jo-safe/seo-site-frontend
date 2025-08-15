@@ -738,14 +738,14 @@ button.primary:active {
     margin: 0 0 1rem;
 }
 
-.article-with-ad .article p {
+div.posts > div > article > p {
     margin: 0 0 2rem;
     line-height: 1.6;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    line-clamp: 2;
+    line-clamp: 3;
     text-overflow: ellipsis;
 }
 
