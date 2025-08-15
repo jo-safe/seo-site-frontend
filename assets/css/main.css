@@ -718,30 +718,36 @@ button.primary:active {
   padding: 1rem;
   box-sizing: border-box;
 }
-  .article-with-ad {
+.article-with-ad {
     display: flex;
     flex-direction: column;
+    height: 400px;
+    margin-bottom: 2rem;
     flex: 1 1 26rem;
     max-width: 24rem;
     min-width: 16rem;
     box-sizing: border-box;
-  }
+}
 .article-with-ad .article {
     background: #fff;
     padding: 1rem;
     box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     flex: 1 1 auto;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
-.article-with-ad .article h3 {
+div.posts > div > article > р3 {
     margin: 0 0 1rem;
+    flex: 0 1 auto;
+    line-height: 1.4;
 }
 
 div.posts > div > article > p {
     margin: 0 0 2rem;
     line-height: 1.6;
     overflow: hidden;
+    flex: 1 1 auto;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -756,6 +762,7 @@ div.posts > div > article > p {
         rgba(255,255,255,0.9) 0%,
         rgba(255,255,255,1) 100%);
 }
+
 .article-with-ad .adblock {
   background: #f9f9f9;
   border: 1px dashed #ccc;
