@@ -283,6 +283,10 @@ async function loadSearchResults() {
 
 // === Похожие статьи ===
 function renderSimilarBatch() {
+  const total = popularArticles.length;
+  const start = renderedIndex;
+  const end = Math.min(total, renderedIndex + (itemsPerRow * BLOCK_BATCH_COUNT));
+
   const container = document.getElementById("similar-articles");
   if (!container) return;
 
