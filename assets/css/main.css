@@ -741,6 +741,12 @@ button.primary:active {
 .article-with-ad .article p {
     margin: 0 0 2rem;
     line-height: 1.6;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    text-overflow: ellipsis;
 }
 
 .article-with-ad .article .actions {
