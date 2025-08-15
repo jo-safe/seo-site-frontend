@@ -322,7 +322,7 @@ hr.major {
 .article-with-ad {
   display: flex;
   flex-direction: column;
-  height: calc(50% - 1.5em);
+  height: 400px;
   margin-bottom: 2rem;
 }
 
