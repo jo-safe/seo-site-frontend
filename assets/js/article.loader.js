@@ -307,7 +307,7 @@ async function loadSimilarArticles() {
   if (!slug) return;
 
   try {
-    const res = await fetch(`https://seo-site-backend-production.up.railway.app/api/similar_articles?slug=${encodeURIComponent(slug)}`);
+    const res = await fetch(`https://seo-site-backend-production.up.railway.app/api/similar_articles?slug=${encodeURIComponent(slug)}&limit=${3*getArticlesPerRow()}`);
     if (!res.ok) throw new Error("Не удалось загрузить похожие статьи");
 
     similarArticles = await res.json();
