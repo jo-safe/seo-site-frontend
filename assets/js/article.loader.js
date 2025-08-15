@@ -169,11 +169,10 @@ function renderNextPopularBlocks(container, itemsPerRow) {
 
   renderedIndex = end;
 
-  if (renderedIndex < total) {
-    insertLoadMoreButton(container, () => {
-      renderNextPopularBlocks(container, itemsPerRow);
-    });
-  }
+  
+  insertLoadMoreButton(container, () => {
+    renderNextPopularBlocks(container, itemsPerRow);
+  });
 }
 
 function insertLoadMoreButton(container, onClick) {
