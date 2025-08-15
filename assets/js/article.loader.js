@@ -120,77 +120,76 @@ async function loadSearchResultTitle() {
 
 // === Загрузка популярных ===
 async function loadPopularArticles() {
-  const container = document.getElementById("article-container");
-  if (!container) return;
-
-  const itemsPerRow = getArticlesPerRow();
-  const params = new URLSearchParams(window.location.search);
-  const theme = params.get("theme");
-  const url = theme
-    ? `https://seo-site-backend-production.up.railway.app/api/random_articles?theme=${encodeURIComponent(theme)}&count=${itemsPerRow*BLOCK_BATCH_COUNT}`
-    : `https://seo-site-backend-production.up.railway.app/api/random_articles?count=${itemsPerRow*BLOCK_BATCH_COUNT}`;
-
-  try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error("Не удалось загрузить статьи");
-
-    popularArticles = await res.json();
-    container.innerHTML = "";
-    renderedIndex = 0;
-
-    renderNextPopularBlocks(container, itemsPerRow);
-  } catch (err) {
-    console.error("Ошибка при загрузке статей:", err);
-    container.innerHTML = "<p>Ошибка загрузки статей</p>";
-  }
+    const container = document.getElementById("article-container");
+    if (!container) return;
+    
+    const itemsPerRow = getArticlesPerRow();
+    const params = new URLSearchParams(window.location.search);
+    const theme = params.get("theme");
+    
+    // Получаем ID уже отображенных статей
+    const renderedArticles = container.querySelectorAll('.article-block');
+    const exceptArticles = Array.from(renderedArticles)
+        .map(article => article.dataset.id)
+        .filter(id => id);
+    
+    const url = theme
+        ? `https://seo-site-backend-production.up.railway.app/api/random_articles?theme=${encodeURIComponent(theme)}&count=${itemsPerRow*BLOCK_BATCH_COUNT}&except_articles=${exceptArticles.join(',')}`
+        : `https://seo-site-backend-production.up.railway.app/api/random_articles?count=${itemsPerRow*BLOCK_BATCH_COUNT}&except_articles=${exceptArticles.join(',')}`;
+    
+    try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("Не удалось загрузить статьи");
+        const newArticles = await res.json();
+        
+        // Добавляем новые статьи к существующим
+        popularArticles = [...popularArticles, ...newArticles];
+        renderedIndex = popularArticles.length;
+        renderNextPopularBlocks(container, itemsPerRow);
+    } catch (err) {
+        console.error("Ошибка при загрузке статей:", err);
+        container.innerHTML = "<p>Ошибка загрузки статей</p>";
+    }
 }
 
 function renderNextPopularBlocks(container, itemsPerRow) {
-  const total = popularArticles.length;
-  const start = renderedIndex;
-  const end = Math.min(total, renderedIndex + (itemsPerRow * BLOCK_BATCH_COUNT));
-
-  // Удалим старую кнопку
-  const oldButton = document.getElementById("load-more");
-  if (oldButton) oldButton.remove();
-
-  // Отрисовываем пачками
-  for (let i = start; i < end; i += itemsPerRow) {
-    const row = document.createElement("div");
-    row.className = "posts";
-
-    for (let j = i; j < i + itemsPerRow && j < end; j++) {
-      const block = createStandardArticleBlock(popularArticles[j], true);
-      row.appendChild(block);
+    const total = popularArticles.length;
+    const start = renderedIndex - (itemsPerRow * BLOCK_BATCH_COUNT);
+    const end = Math.min(total, start + (itemsPerRow * BLOCK_BATCH_COUNT));
+    
+    // Удалим старую кнопку
+    const oldButton = document.getElementById("load-more");
+    if (oldButton) oldButton.remove();
+    
+    // Отрисовываем пачками
+    for (let i = start; i < end; i += itemsPerRow) {
+        const row = document.createElement("div");
+        row.className = "posts";
+        for (let j = i; j < i + itemsPerRow && j < end; j++) {
+            const block = createStandardArticleBlock(popularArticles[j], true);
+            row.appendChild(block);
+        }
+        container.appendChild(row);
     }
-
-    container.appendChild(row);
-  }
-
-  renderedIndex = end;
-
-  
-  insertLoadMoreButton(container, () => {
-    renderNextPopularBlocks(container, itemsPerRow);
-  });
+    
+    renderedIndex = end;
+    insertLoadMoreButton(container, () => {
+        loadPopularArticles(); // Вызываем loadPopularArticles вместо renderNextPopularBlocks
+    });
 }
 
 function insertLoadMoreButton(container, onClick) {
-  const wrapper = document.createElement("div");
-  wrapper.style.textAlign = "center";
-  wrapper.style.margin = "2rem 0";
-
-  const btn = document.createElement("button");
-  btn.id = "load-more";
-  btn.className = "button";
-  btn.textContent = "Загрузить ещё";
-
-  btn.addEventListener("click", onClick);
-
-  wrapper.appendChild(btn);
-  container.appendChild(wrapper);
+    const wrapper = document.createElement("div");
+    wrapper.style.textAlign = "center";
+    wrapper.style.margin = "2rem 0";
+    const btn = document.createElement("button");
+    btn.id = "load-more";
+    btn.className = "button";
+    btn.textContent = "Загрузить ещё";
+    btn.addEventListener("click", onClick);
+    wrapper.appendChild(btn);
+    container.appendChild(wrapper);
 }
-
 
 
 // === Загрузка свежих ===
@@ -282,32 +281,27 @@ async function loadSearchResults() {
 
 // === Похожие статьи ===
 function renderSimilarBatch() {
-  itemsPerRow = getArticlesPerRow()
-  const total = similarArticles.length;
-  const start = renderedIndex;
-  const end = Math.min(total, renderedIndex + (itemsPerRow * BLOCK_BATCH_COUNT));
-
-  const container = document.getElementById("similar-articles");
-  if (!container) return;
+    itemsPerRow = getArticlesPerRow();
+    const total = similarArticles.length;
+    const start = similarRenderedIndex;
+    const end = Math.min(total, similarRenderedIndex + (itemsPerRow * BLOCK_BATCH_COUNT));
+    const container = document.getElementById("similar-articles");
+    if (!container) return;
 
     // Отрисовываем пачками
-  for (let i = start; i < end; i += itemsPerRow) {
-    const row = document.createElement("div");
-    row.className = "posts";
-
-    const end = Math.min(similarRenderedIndex + itemsPerRow, similarArticles.length);
-    for (let i = similarRenderedIndex; i < end; i++) {
-      const block = createStandardArticleBlock(similarArticles[i], true);
-      row.appendChild(block);
+    for (let i = start; i < end; i += itemsPerRow) {
+        const row = document.createElement("div");
+        row.className = "posts";
+        for (let j = i; j < i + itemsPerRow && j < end; j++) {
+            const block = createStandardArticleBlock(similarArticles[j], true);
+            row.appendChild(block);
+        }
+        container.appendChild(row);
     }
-    container.appendChild(row);
     similarRenderedIndex = end;
-  }
-
-  if (similarRenderedIndex >= similarArticles.length) {
-    const btn = document.getElementById("load-more");
-    if (btn) btn.remove();
-  }
+    insertLoadMoreButton(container, () => {
+        loadSimilarArticles(); // Вызываем loadSimilarArticles вместо renderSimilarBatch
+    });
 }
 
 async function loadSimilarArticles() {
