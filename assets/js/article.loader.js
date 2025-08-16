@@ -166,7 +166,7 @@ function renderNextPopularBlocks(container, itemsPerRow) {
         const row = document.createElement("div");
         row.className = "posts";
         for (let j = i; j < i + itemsPerRow && j < end; j++) {
-            const block = createStandardArticleBlock(popularArticles[j], true);
+            const block = createStandardArticleBlock(popularArticles[j], false);
             row.appendChild(block);
         }
         container.appendChild(row);
@@ -210,7 +210,7 @@ async function loadRecentArticles() {
       row.className = "posts";
 
       for (let j = i; j < i + itemsPerRow && j < articles.length; j++) {
-        const block = createStandardArticleBlock(articles[j], true);
+        const block = createStandardArticleBlock(articles[j], false);
         row.appendChild(block);
       }
 
@@ -232,7 +232,7 @@ async function loadRecentArticlesSidebar() {
     const articles = await res.json();
     container.innerHTML = "";
     articles.forEach(a => {
-      const block = createStandardArticleBlock(a, true);
+      const block = createStandardArticleBlock(a, false);
       container.appendChild(block);
     });
   } catch (err) {
@@ -267,7 +267,7 @@ async function loadSearchResults() {
       row.className = "posts";
 
       for (let j = i; j < i + itemsPerRow && j < articles.length; j++) {
-        const block = createStandardArticleBlock(articles[j], true);
+        const block = createStandardArticleBlock(articles[j], false);
         row.appendChild(block);
       }
 
@@ -293,7 +293,7 @@ function renderSimilarBatch() {
         const row = document.createElement("div");
         row.className = "posts";
         for (let j = i; j < i + itemsPerRow && j < end; j++) {
-            const block = createStandardArticleBlock(similarArticles[j], true);
+            const block = createStandardArticleBlock(similarArticles[j], false);
             row.appendChild(block);
         }
         container.appendChild(row);

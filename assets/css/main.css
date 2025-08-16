@@ -711,6 +711,7 @@ button.primary:active {
 
 .posts {
   display: flex;
+  height: 500;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
