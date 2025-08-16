@@ -765,6 +765,7 @@ div.posts > div > article > p {
 }
 
 .article-with-ad .adblock {
+  height: 100%;
   background: #f9f9f9;
   border: 1px dashed #ccc;
   text-align: center;
