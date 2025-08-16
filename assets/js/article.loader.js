@@ -49,7 +49,7 @@ function createStandardArticleBlock(a, withAd = true) {
   const article = document.createElement("article");
 
   const link = document.createElement("a");
-  link.href = `articles/${a.slug}.html`;
+  link.href = `articles/${a.slug}.webp`;
   link.className = "image";
   link.innerHTML = `<img src="${a.image}" alt="">`;
 
