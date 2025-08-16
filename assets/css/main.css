@@ -722,7 +722,7 @@ button.primary:active {
 .article-with-ad {
     display: flex;
     flex-direction: column;
-    height: 400px;
+    height: 600px;
     margin-bottom: 2rem;
     flex: 1 1 26rem;
     max-width: 24rem;
