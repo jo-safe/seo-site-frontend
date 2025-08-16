@@ -45,6 +45,13 @@ function truncate(text, length = 160) {
 function createStandardArticleBlock(a, withAd = true) {
   const wrapper = document.createElement("div");
   wrapper.className = "article-with-ad";
+  if (withAd) {
+    const ad = document.createElement("div");
+    ad.className = "adblock";
+    ad.textContent = "Реклама";
+    wrapper.appendChild(ad);
+    return wrapper;
+  }
 
   const article = document.createElement("article");
 
@@ -75,14 +82,6 @@ function createStandardArticleBlock(a, withAd = true) {
   article.appendChild(actions);
 
   wrapper.appendChild(article);
-
-  if (withAd) {
-    const ad = document.createElement("div");
-    ad.className = "adblock";
-    ad.textContent = "Реклама";
-    wrapper.appendChild(ad);
-  }
-
   return wrapper;
 }
 
@@ -166,7 +165,8 @@ function renderNextPopularBlocks(container, itemsPerRow) {
         const row = document.createElement("div");
         row.className = "posts";
         for (let j = i; j < i + itemsPerRow && j < end; j++) {
-            const block = createStandardArticleBlock(popularArticles[j], false);
+            let isAd = Math.random() > 0.8
+            const block = createStandardArticleBlock(popularArticles[j], isAd);
             row.appendChild(block);
         }
         container.appendChild(row);
