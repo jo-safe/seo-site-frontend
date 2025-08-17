@@ -88,8 +88,8 @@ function createStandardArticleBlock(a, withAd = true) {
 // === Загрузка названия сайта ===
 async function loadSiteName() {
   const title = document.getElementById("site-name");
-  title.textContent = "Все про все";
-  document.title = document.title + " | Все про все";
+  title.textContent = "Трендлист — свежие статьи каждый день";
+  document.title = document.title + " | Трендлист";
 }
 
 // === Загрузка заглавия странцы ===
