@@ -140,6 +140,7 @@ async function loadPopularArticles() {
         const res = await fetch(url);
         if (!res.ok) throw new Error("Не удалось загрузить статьи");
         const newArticles = await res.json();
+        container.innerHTML = "";
         
         // Добавляем новые статьи к существующим
         popularArticles = [...popularArticles, ...newArticles];
