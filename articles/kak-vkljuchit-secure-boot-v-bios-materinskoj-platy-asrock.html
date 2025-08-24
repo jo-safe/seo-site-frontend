@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<base href="/seo-site-frontend/">
+  <title>Как включить Secure Boot в BIOS материнской платы ASRock</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="is-preload" id="article-page">
+  <div id="wrapper">
+
+    <!-- Основной контент -->
+    <div id="main">
+      <div class="inner">
+        <header id="header">
+          <a href="index.html" class="logo"><strong id="site-name">Название сайта</strong></a>
+          <ul class="icons">
+            <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+            <li><a href="#" class="icon brands fa-telegram"><span class="label">Telegram</span></a></li>
+            <li><a href="#" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
+            <li><a href="#" class="icon brands fa-tiktok"><span class="label">TikTok</span></a></li>
+          </ul>
+        </header>
+
+        <!-- Секция статьи -->
+		<section id="article-content">
+			<header class="main">
+				<h1>Как включить Secure Boot в BIOS материнской платы ASRock</h1>
+			</header>
+			
+			<span class="image main"><img src="images/tumbnail-kak-vkljuchit-secure-boot-v-bios-materinskoj-platy-asrock.webp" alt="" /></span>
+		
+			<ul class="keywords">
+				
+				<li><a href="search.html?q=secure%20boot">secure boot</a></li>
+				
+				<li><a href="search.html?q=%D0%B2%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C">включить</a></li>
+				
+				<li><a href="search.html?q=%D0%B1%D0%B8%D0%BE%D1%81">биос</a></li>
+				
+				<li><a href="search.html?q=asrock">asrock</a></li>
+				
+				<li><a href="search.html?q=%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BF%D0%BB%D0%B0%D1%82%D0%B0">материнская плата</a></li>
+				
+				<li><a href="search.html?q=%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8">настройки</a></li>
+				
+				<li><a href="search.html?q=%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C">безопасность</a></li>
+				
+				<li><a href="search.html?q=boot">boot</a></li>
+				
+				<li><a href="search.html?q=secure%20boot">secure boot</a></li>
+				
+				<li><a href="search.html?q=%D0%B1%D0%B8%D0%BE%D1%81%20asrock">биос asrock</a></li>
+				
+			</ul>
+		
+			
+				
+					<p>Всех нас часто пугают вирусами. Однако не все знают о том, что есть еще один вид угроз — это уязвимости программного обеспечения при загрузке операционной системы на компьютер. Подобные угрозы могут использоваться для того чтобы внедрить вредоносный код прямо перед тем как пользователь сможет ввести свой пароль или зайти в систему Windows/Linux. В таких случаях вирус может полностью взять под контроль вашу систему даже если вы знаете свои учетные данные и они надежно защищены. Для борьбы со всеми этими видами угроз существует технология «SecureBoot», которая предотвращает установку опасных программ непосредственно во время запуска компьютера. Давайте разберемся, где ее можно найти и как её активировать. :)</p>
+				
+			
+				
+					<h2>Зачем нужна функция Secure Boot?</h2>
+				
+			
+				
+					<p>С помощью функции Secure Boot (безопасная загрузка) возможно обеспечить целостность процессов инициализации ОС на компьютере таким образом, который позволит избежать установки некоторых видов программ-паразитов во время работы ПК без вмешательства пользователя. Таким образом, когда мы говорим об активации этой опции, то подразумеваем возможность повышения уровня безопасности вашего ПК. Но стоит помнить, что данная защита работает только вместе с UEFI (Unified Extensible Firmware Interface), поэтому ваш системный блок должен поддерживать именно этот стандарт интерфейса ввода‑вывода вместо устаревшего BIOS.</p>
+				
+			
+				
+					<p>Активация данной функции обеспечивает следующие преимущества:</p>
+				
+			
+				
+					<ul>
+						
+						<li>Отказывает в запуске всех неподписанных драйверов, которые пытаются устанавливаться через безопасную загрузку;</li>
+						
+						<li>Прекращает работу любых приложений, которые были изменены после их первоначальной установки;</li>
+						
+						<li>Позволяет пользователю отключить обновление своего антивируса так, чтобы он больше не обновлялся автоматически;</li>
+						
+						<li>Указывает системе проверить наличие поврежденной записи MBR, а также проверять правильность раздела загрузки.</li>
+						
+					</ul>
+				
+			
+				
+					<p>Поэтому давайте выясним, как же нам включать эту функцию Secure Boot. Это будет зависеть от производителя вашей материнской платы. Мы будем рассматривать вариант прошивки AsusRock. У вас может отличаться расположение нужных настроек в меню, но общий принцип остается неизменным.</p>
+				
+			
+				
+					<h2>Как включить Safe Mode?</h2>
+				
+			
+				
+					<p>Начнем настройку Secure Boot. Выберите соответствующий пункт меню Setup Utility, нажав клавишу Delete, F2 или Esc сразу после загрузки вашего ПК. Точное сочетание кнопок зависит от модели материнской платы и выбранного вами режима загрузки, например Fast Boot или Normal Boot. Теперь нажмите Enter, чтобы выбрать Advanced Settings → Security → Secure Boot Configuration. Если данный раздел отсутствует в вашем меню BIOS, значит эта функция недоступна для ваших целей. Иначе переходите пошагово к следующим пунктам!</p>
+				
+			
+				
+					<p>Так как сейчас наш режим загрузки установлен в Standby mode, необходимо его изменить на нормальный, иначе изменения будут сохранены неправильно. После этого нужно установить значение Clear Secure Boot Key to Current Value. Далее выбираем Enable Secure Boot for the next time and сохраняем внесенные нами изменения путем нажатия кнопки Save &amp; Exit Setup. Ваше устройство должно перезагрузить процесс, после чего вам потребуется указать текущие дату и время. Затем система запустится в режиме Secure Boot.</p>
+				
+			
+				
+					<p>Ну вот, теперь наша система имеет повышенное качество защиты, которое позволяет ей самостоятельно противостоять различным атакам и угрозам. К сожалению, далеко не каждый производитель предоставляет такую защиту своим покупателям. Надеемся, что ваши усилия оказались успешными и благодаря этому вашему устройству удалось достичь новых высот в области кибербезопасности!</p>
+				
+			
+				
+					<p>Обязательно поделитесь своими результатами с другими пользователями, которым тоже пришлось искать такие инструкции. Не забывайте оставлять комментарии и предложения относительно данного материала. Спасибо за ваше внимание!</p>
+				
+			
+		</section>
+
+        <!-- Динамическая реклама -->
+        <section>
+          <div class="adblock" id="dynamic-ad-bottom">Реклама (загружается)...</div>
+        </section>
+
+        <section>
+          <h2>Похожие статьи</h2>
+          <div id="similar-articles" class="posts">
+            <p>Загрузка похожих статей...</p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Сайдбар -->
+    <div id="sidebar">
+      <div class="inner">
+
+        <!-- Поиск -->
+        <section id="search" class="alt">
+          <form method="get" action="search.html" id="search-form">
+		  		  <input type="text" name="q" id="query" placeholder="Поиск по статьям" autocomplete="off" required />
+			    </form>
+        </section>
+
+        <!-- Меню (подгружается) -->
+        <nav id="menu">
+          <header class="major"><h2>Меню</h2></header>
+          <ul id="menu-items">
+            <li><a href="index.html">Популярное</a></li>
+            <li><a href="recent.html">Свежее</a></li>
+          </ul>
+        </nav>
+
+        <!-- Свежие статьи -->
+        <section>
+          <header class="major"><h2>Свежие статьи</h2></header>
+          <div class="mini-posts" id="recent-articles"></div>
+          <li><a href="recent.html" class="button">Больше новинок</a></li>
+        </section>
+
+        <!-- Реклама в футере -->
+        <footer id="footer">
+          <div class="adblock" id="footer-ad">Реклама footer (загружается)...</div>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <!-- Скрипты -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/article.loader.js"></script>
+</body>
+</html>
