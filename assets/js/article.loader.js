@@ -14,6 +14,8 @@ const themeNames = {
   news: "Новости"
 };
 
+api_link = "https://api.trendlist.ru/"
+
 // === Параметры адаптивности ===
 const BASE_FONT_SIZE = parseFloat(getComputedStyle(document.documentElement).fontSize);
 const ARTICLE_MIN_WIDTH_REM = 26; // Минимальная ширина статьи в rem
@@ -133,8 +135,8 @@ async function loadPopularArticles() {
         .filter(id => id);
     
     const url = theme
-        ? `https://seo-site-backend-production.up.railway.app/api/random_articles?theme=${encodeURIComponent(theme)}&count=${itemsPerRow*BLOCK_BATCH_COUNT}${exceptArticles.length ? `&except_articles=${exceptArticles.join(',')}` : ''}`
-        : `https://seo-site-backend-production.up.railway.app/api/random_articles?count=${itemsPerRow*BLOCK_BATCH_COUNT}${exceptArticles.length ? `&except_articles=${exceptArticles.join(',')}` : ''}`;
+        ? `${api_link}random_articles?theme=${encodeURIComponent(theme)}&count=${itemsPerRow*BLOCK_BATCH_COUNT}${exceptArticles.length ? `&except_articles=${exceptArticles.join(',')}` : ''}`
+        : `${api_link}random_articles?count=${itemsPerRow*BLOCK_BATCH_COUNT}${exceptArticles.length ? `&except_articles=${exceptArticles.join(',')}` : ''}`;
     
     try {
         const res = await fetch(url);
@@ -201,7 +203,7 @@ async function loadRecentArticles() {
   const itemsPerRow = getArticlesPerRow();
 
   try {
-    const res = await fetch("https://seo-site-backend-production.up.railway.app/api/recent_articles");
+    const res = await fetch("${api_link}recent_articles");
     if (!res.ok) throw new Error("Ошибка загрузки");
     const articles = await res.json();
     container.innerHTML = "";
@@ -228,7 +230,7 @@ async function loadRecentArticlesSidebar() {
   const container = document.getElementById("recent-articles");
   if (!container) return;
   try {
-    const res = await fetch("https://seo-site-backend-production.up.railway.app/api/recent_articles");
+    const res = await fetch("${api_link}recent_articles");
     if (!res.ok) throw new Error("Ошибка загрузки");
     const articles = await res.json();
     container.innerHTML = "";
@@ -252,7 +254,7 @@ async function loadSearchResults() {
   const itemsPerRow = getArticlesPerRow();
 
   try {
-    const res = await fetch(`https://seo-site-backend-production.up.railway.app/api/look_for_articles?q=${encodeURIComponent(query)}`);
+    const res = await fetch(`${api_link}look_for_articles?q=${encodeURIComponent(query)}`);
     if (!res.ok) throw new Error("Ошибка поиска");
 
     const articles = await res.json();
@@ -312,7 +314,7 @@ async function loadSimilarArticles() {
   if (!slug) return;
 
   try {
-    const res = await fetch(`https://seo-site-backend-production.up.railway.app/api/similar_articles?slug=${encodeURIComponent(slug)}&limit=${3*getArticlesPerRow()}`);
+    const res = await fetch(`${api_link}similar_articles?slug=${encodeURIComponent(slug)}&limit=${3*getArticlesPerRow()}`);
     if (!res.ok) throw new Error("Не удалось загрузить похожие статьи");
 
     similarArticles = await res.json();
@@ -330,7 +332,7 @@ async function loadSimilarArticles() {
 // === Загрузка тем ===
 async function loadThemes() {
   try {
-    const res = await fetch("https://seo-site-backend-production.up.railway.app/api/themes");
+    const res = await fetch("${api_link}themes");
     if (!res.ok) throw new Error("Темы не получены");
     const themes = await res.json();
     const menu = document.getElementById("menu-items") || document.querySelector("#menu ul");
