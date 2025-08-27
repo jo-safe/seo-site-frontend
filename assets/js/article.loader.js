@@ -286,7 +286,7 @@ async function loadSearchResults() {
 
 // === Похожие статьи ===
 async function loadSimilarArticles() {
-    const container = document.getElementById("similar-articles");
+    const container = document.getElementById("article-container");
     if (!container) return;
 
     const slug = getSlugFromPath();
@@ -309,7 +309,7 @@ async function loadSimilarArticles() {
 }
 
 function renderSimilarBatch() {
-    const container = document.getElementById("similar-articles");
+    const container = document.getElementById("article-container");
     if (!container) return;
 
     const itemsPerRow = getArticlesPerRow();
