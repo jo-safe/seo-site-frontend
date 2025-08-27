@@ -14,7 +14,7 @@ const themeNames = {
   news: "Новости"
 };
 
-api_link = "https://api.trendlist.ru/"
+api_link = "https://api.trendlist.ru/api/"
 
 // === Параметры адаптивности ===
 const BASE_FONT_SIZE = parseFloat(getComputedStyle(document.documentElement).fontSize);
