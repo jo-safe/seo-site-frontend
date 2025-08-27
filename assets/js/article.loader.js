@@ -324,8 +324,6 @@ async function loadSimilarArticles() {
     container.innerHTML = "";
 
     renderSimilarBatch();
-    insertLoadMoreButton(container, renderSimilarBatch);
-
   } catch (err) {
     console.warn("Ошибка загрузки похожих статей:", err);
   }
