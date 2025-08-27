@@ -58,9 +58,9 @@ function createStandardArticleBlock(a, withAd = true) {
   const article = document.createElement("article");
 
   const link = document.createElement("a");
-  link.href = `images/${a.slug}.webp`;
+  link.href = `images/preview-${a.slug}.webp`;
   link.className = "image";
-  link.innerHTML = `<img src="${a.image}" alt="">`;
+  link.innerHTML = `<img src="images/preview-${a.slug}.webp" alt="">`;
 
   const title = document.createElement("h3");
   title.textContent = a.title;
