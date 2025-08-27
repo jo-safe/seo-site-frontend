@@ -285,48 +285,58 @@ async function loadSearchResults() {
 }
 
 // === Похожие статьи ===
-function renderSimilarBatch() {
-    itemsPerRow = getArticlesPerRow();
-    const total = similarArticles.length;
-    const start = similarRenderedIndex;
-    const end = Math.min(total, similarRenderedIndex + (itemsPerRow * BLOCK_BATCH_COUNT));
+async function loadSimilarArticles() {
     const container = document.getElementById("similar-articles");
     if (!container) return;
 
-    // Отрисовываем пачками
+    const slug = getSlugFromPath();
+    if (!slug) return;
+
+    try {
+        const itemsPerRow = getArticlesPerRow();
+        const res = await fetch(`${api_link}similar_articles?slug=${encodeURIComponent(slug)}&limit=${3*itemsPerRow}`);
+        if (!res.ok) throw new Error("Не удалось загрузить похожие статьи");
+
+        const newArticles = await res.json();
+
+        // Добавляем новые статьи к уже загруженным
+        similarArticles = [...similarArticles, ...newArticles];
+
+        renderSimilarBatch();
+    } catch (err) {
+        console.warn("Ошибка загрузки похожих статей:", err);
+    }
+}
+
+function renderSimilarBatch() {
+    const container = document.getElementById("similar-articles");
+    if (!container) return;
+
+    const itemsPerRow = getArticlesPerRow();
+    const total = similarArticles.length;
+    const start = similarRenderedIndex;
+    const end = Math.min(total, start + (itemsPerRow * BLOCK_BATCH_COUNT));
+
+    // Удаляем старую кнопку "Загрузить ещё", если она есть
+    const oldButton = document.getElementById("load-more");
+    if (oldButton) oldButton.remove();
+
+    // Отрисовываем новые статьи
     for (let i = start; i < end; i += itemsPerRow) {
         const row = document.createElement("div");
         row.className = "posts";
         for (let j = i; j < i + itemsPerRow && j < end; j++) {
-            let isAd = Math.random() > 0.8
+            const isAd = Math.random() > 0.8;
             const block = createStandardArticleBlock(similarArticles[j], isAd);
             row.appendChild(block);
         }
         container.appendChild(row);
     }
+
     similarRenderedIndex = end;
-    insertLoadMoreButton(container, () => {
-        loadSimilarArticles(); // Вызываем loadSimilarArticles вместо renderSimilarBatch
-    });
-}
 
-async function loadSimilarArticles() {
-  const container = document.getElementById("similar-articles");
-  if (!container) return;
-  const slug = getSlugFromPath();
-  if (!slug) return;
-
-  try {
-    const res = await fetch(`${api_link}similar_articles?slug=${encodeURIComponent(slug)}&limit=${3*getArticlesPerRow()}`);
-    if (!res.ok) throw new Error("Не удалось загрузить похожие статьи");
-
-    similarArticles = await res.json();
-    container.innerHTML = "";
-
-    renderSimilarBatch();
-  } catch (err) {
-    console.warn("Ошибка загрузки похожих статей:", err);
-  }
+    // Вставляем кнопку "Загрузить ещё"
+    insertLoadMoreButton(container, loadSimilarArticles);
 }
 
 
