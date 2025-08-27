@@ -203,7 +203,7 @@ async function loadRecentArticles() {
   const itemsPerRow = getArticlesPerRow();
 
   try {
-    const res = await fetch("${api_link}recent_articles");
+    const res = await fetch(`${api_link}recent_articles`);
     if (!res.ok) throw new Error("Ошибка загрузки");
     const articles = await res.json();
     container.innerHTML = "";
@@ -230,7 +230,7 @@ async function loadRecentArticlesSidebar() {
   const container = document.getElementById("recent-articles");
   if (!container) return;
   try {
-    const res = await fetch("${api_link}recent_articles");
+    const res = await fetch(`${api_link}recent_articles`);
     if (!res.ok) throw new Error("Ошибка загрузки");
     const articles = await res.json();
     container.innerHTML = "";
@@ -332,7 +332,7 @@ async function loadSimilarArticles() {
 // === Загрузка тем ===
 async function loadThemes() {
   try {
-    const res = await fetch("${api_link}themes");
+    const res = await fetch(`${api_link}themes`);
     if (!res.ok) throw new Error("Темы не получены");
     const themes = await res.json();
     const menu = document.getElementById("menu-items") || document.querySelector("#menu ul");
