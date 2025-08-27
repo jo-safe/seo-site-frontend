@@ -299,7 +299,7 @@ function renderSimilarBatch() {
         row.className = "posts";
         for (let j = i; j < i + itemsPerRow && j < end; j++) {
             let isAd = Math.random() > 0.8
-            const block = createStandardArticleBlock(popularArticles[j], isAd);
+            const block = createStandardArticleBlock(similarArticles[j], isAd);
             row.appendChild(block);
         }
         container.appendChild(row);
