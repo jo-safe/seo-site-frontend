@@ -151,6 +151,15 @@ async function loadPopularArticles() {
     } catch (err) {
         console.error("Ошибка при загрузке статей:", err);
         container.innerHTML = "<p>Ошибка загрузки статей</p>";
+    } finally {
+      const paragraphs = Array.from(container.querySelectorAll(":scope > p"));
+
+      paragraphs.forEach(p => {
+          // Если <p> не внутри блоков с классами статей
+          if (!p.closest(".posts") && !p.closest(".article-with-ad")) {
+              p.remove();
+          }
+      });
     }
 }
 
@@ -305,6 +314,15 @@ async function loadSimilarArticles() {
         renderSimilarBatch();
     } catch (err) {
         console.warn("Ошибка загрузки похожих статей:", err);
+    } finally {
+      const paragraphs = Array.from(container.querySelectorAll(":scope > p"));
+      
+      paragraphs.forEach(p => {
+          // Если <p> не внутри блоков с классами статей
+          if (!p.closest(".posts") && !p.closest(".article-with-ad")) {
+              p.remove();
+          }
+      });
     }
 }
 
