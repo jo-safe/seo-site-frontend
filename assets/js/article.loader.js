@@ -123,30 +123,30 @@ async function loadSearchResultTitle() {
 async function loadPopularArticles() {
     const container = document.getElementById("article-container");
     if (!container) return;
-    
+
     const itemsPerRow = getArticlesPerRow();
     const params = new URLSearchParams(window.location.search);
     const theme = params.get("theme");
-    
+
     // Получаем ID уже отображенных статей
     const renderedArticles = container.querySelectorAll('.article-block');
     const exceptArticles = Array.from(renderedArticles)
         .map(article => article.dataset.id)
         .filter(id => id);
-    
+
     const url = theme
         ? `${api_link}random_articles?theme=${encodeURIComponent(theme)}&count=${itemsPerRow*BLOCK_BATCH_COUNT}${exceptArticles.length ? `&except_articles=${exceptArticles.join(',')}` : ''}`
         : `${api_link}random_articles?count=${itemsPerRow*BLOCK_BATCH_COUNT}${exceptArticles.length ? `&except_articles=${exceptArticles.join(',')}` : ''}`;
-    
+
     try {
         const res = await fetch(url);
         if (!res.ok) throw new Error("Не удалось загрузить статьи");
         const newArticles = await res.json();
-        container.innerHTML = "";
-        
+
         // Добавляем новые статьи к существующим
         popularArticles = [...popularArticles, ...newArticles];
-        renderedIndex = popularArticles.length;
+
+        // Отрисовываем новые блоки
         renderNextPopularBlocks(container, itemsPerRow);
     } catch (err) {
         console.error("Ошибка при загрузке статей:", err);
@@ -156,28 +156,30 @@ async function loadPopularArticles() {
 
 function renderNextPopularBlocks(container, itemsPerRow) {
     const total = popularArticles.length;
-    const start = renderedIndex - (itemsPerRow * BLOCK_BATCH_COUNT);
+    const start = renderedIndex; // начинаем с текущего renderIndex
     const end = Math.min(total, start + (itemsPerRow * BLOCK_BATCH_COUNT));
-    
+
     // Удалим старую кнопку
     const oldButton = document.getElementById("load-more");
     if (oldButton) oldButton.remove();
-    
+
     // Отрисовываем пачками
     for (let i = start; i < end; i += itemsPerRow) {
         const row = document.createElement("div");
         row.className = "posts";
         for (let j = i; j < i + itemsPerRow && j < end; j++) {
-            let isAd = Math.random() > 0.8
+            let isAd = Math.random() > 0.8;
             const block = createStandardArticleBlock(popularArticles[j], isAd);
             row.appendChild(block);
         }
         container.appendChild(row);
     }
-    
+
     renderedIndex = end;
+
+    // Вставляем кнопку "Загрузить ещё"
     insertLoadMoreButton(container, () => {
-        loadPopularArticles(); // Вызываем loadPopularArticles вместо renderNextPopularBlocks
+        loadPopularArticles();
     });
 }
 
