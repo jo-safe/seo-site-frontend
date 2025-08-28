@@ -1,178 +1,191 @@
 <!DOCTYPE HTML>
 <html>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (m, e, t, r, i, k, a) {
+        m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+        m[i].l = 1 * new Date();
+        for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+        k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=103931187', 'ym');
+
+    ym(103931187, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", accurateTrackBounce: true, trackLinks: true });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/103931187" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 <head>
-	<base href="/">
-  <title>Как включить Secure Boot в BIOS Aorus Elite</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <link rel="stylesheet" href="assets/css/main.css" />
+    <base href="/">
+    <title>Как включить Secure Boot в BIOS Aorus Elite</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body class="is-preload" id="article-page">
-  <div id="wrapper">
+    <div id="wrapper">
 
-    <!-- Основной контент -->
-    <div id="main">
-      <div class="inner">
-        <header id="header">
-          <a href="index.html" class="logo"><strong id="site-name">Название сайта</strong></a>
-        </header>
+        <!-- Основной контент -->
+        <div id="main">
+            <div class="inner">
+                <header id="header">
+                    <a href="index.html" class="logo"><strong id="site-name">Название сайта</strong></a>
+                </header>
 
-        <!-- Секция статьи -->
-		<section id="article-content">
-			<header class="main">
-				<h1>Как включить Secure Boot в BIOS Aorus Elite</h1>
-			</header>
-			
-			<span class="image main"><img src="images/tumbnail-kak-vkljuchit-secure-boot-v-bios-aorus-elite.webp" alt="" /></span>
-		
-			<ul class="keywords">
-				
-				<li><a href="search.html?q=secure%20boot">secure boot</a></li>
-				
-				<li><a href="search.html?q=aorus">aorus</a></li>
-				
-				<li><a href="search.html?q=%D0%B1%D0%B8%D0%BE%D1%81">биос</a></li>
-				
-				<li><a href="search.html?q=%D0%B2%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C">включить</a></li>
-				
-				<li><a href="search.html?q=elite">elite</a></li>
-				
-				<li><a href="search.html?q=%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8">настройки</a></li>
-				
-				<li><a href="search.html?q=%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B8">технологии</a></li>
-				
-				<li><a href="search.html?q=%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C">безопасность</a></li>
-				
-				<li><a href="search.html?q=%D0%BA%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80">компьютер</a></li>
-				
-				<li><a href="search.html?q=%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BF%D0%BB%D0%B0%D1%82%D0%B0">материнская плата</a></li>
-				
-				<li><a href="search.html?q=aorus%20elite">aorus elite</a></li>
-				
-				<li><a href="search.html?q=%D0%B1%D0%B8%D0%BE%D1%81%20aorus">биос aorus</a></li>
-				
-				<li><a href="search.html?q=%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0">настройка</a></li>
-				
-				<li><a href="search.html?q=%D0%B2%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5">включение</a></li>
-				
-			</ul>
-		
-			
-				
-					<h2>Процедура займёт не больше пяти минут.</h2>
-				
-			
-				
-					<h2>Что такое SecureBoot</h2>
-				
-			
-				
-					<p>Технология защищает систему от запуска вредоносных программ при старте компьютера (например вирусов или руткитов). Она работает следующим образом: перед загрузкой операционной системы проверяется целостность системного ПО. Если всё соответствует установленным критериям — система включается нормально. В противном случае на экране появляется сообщение об ошибке Secure Boot и дальнейший процесс прерывается. Пользователь может самостоятельно исправить ситуацию лишь после ввода пароля администратора UEFI-BIOS’а. Таким способом технология гарантирует только то, что ОС будет запущена без постороннего вмешательства. Иными словами она обеспечивает защиту в рамках одной машины, а не всей сети.</p>
-				
-			
-				
-					<h2>Зачем нужно включать SecureBoot</h2>
-				
-			
-				
-					<p>Сделать это стоит для повышения уровня защиты своего ПК как минимум по двум причинам. Во‑первых, когда вы будете использовать виртуальные машины Windows, они смогут работать под управлением Hyper‑V Virtual Machine Services, предоставляя более широкие возможности управления системой безопасности и изоляции приложений. Кроме того эта функция позволяет исключать из списка доверенных устройств любые USB-накопители и внешние жёсткие диски, которые могут использоваться злоумышленниками для внедрения заражённой информации. А во‑вторых, если у вас есть доступ к серверному оборудованию компании Microsoft, вы сможете избежать дополнительных расходов на лицензирование ОС Windows Server. Все функции этой версии будут доступны бесплатно. Однако такие привилегии даются далеко не всем компаниям, поэтому мы рассмотрим, как можно настроить SecureBoot на обычном домашнем компьютере.</p>
-				
-			
-				
-					<h2>Как отключить TPM2.0 Module Support и установить Secure Boot</h2>
-				
-			
-				
-					<ul>
-						
-						<li>Материнскую плату серии Gigabyte AORUS ELITE;</li>
-						
-						<li>USB-флешку объёмом не менее 8 ГБ, которая была предварительно протестирована в режиме совместимости UDF/FAT32;</li>
-						
-						<li>Windows 10 Home или Pro.</li>
-						
-					</ul>
-				
-			
-				
-					<p>Переходим на сайт производителя вашей платы и скачиваем последнюю версию прошивки. На примере модели GIGABYTE B450 AORUS PRO WIFI показываем всю процедуру обновления и активации Secure Boot. Но учтите, что инструкции работают и для других плат серий AORUS ELITE, но возможно несколько отличаются названиями некоторых пунктов меню BIOS’а. Поэтому будьте внимательны и сверьтесь со скриншотами ниже.</p>
-				
-			
-				
-					<p>Для начала перезагрузите свой компьютер, чтобы он зашёл в режим безопасного старта, нажав клавишу F7 трижды подряд сразу же после появления экрана приветствия производителя. Откройте «Панель Управления» → раздел «Система и Безопасность». Найдите там пункт «Дополнительные параметры безопасности», затем нажмите кнопку «Включите Биометрическую Поддержку Паролем Администратора UEFI» и установите новый пароль. После этого вернитесь обратно в главное окно программы и выберите вкладку «Биометрия». Там найдите функцию TPM2.0 Module Support и переведите её положение в позицию Disabled. Затем снова откройте панель безопасности и активируйте опцию “Управление через командную строку”. Это позволит вам получить необходимые права доступа для выполнения последующих действий. Выполняете команду msconfig /appcpuinfo –v /c, после чего появится консольная команда создания нового файла конфигураций bcdboot.exe c:\windows\system32 &gt;%windir%\bcdutb.cmd</p>
-				
-			
-				
-					<p>Теперь необходимо создать два новых установочных образа. Один нужен нам для полноценного функционирования UEFI Firmware Settings Utility, другой служит исключительно инструментом для разблокировки Secure Boot. Делаем следующее:</p>
-				
-			
-				
-					<ul>
-						
-						<li>Скачанный файл прошивки помещаем в корневой каталог флэшки. Далее копируем содержимое папки MiniToolPartitionWizard_HomeEdition_FreeW9XPE_Setup\_EN__CDROM_DVDROM_ISO_IMAGE_and\_MSIInstallers на тот же накопитель. Либо можете скачать ISO-образ с сайта разработчика вручную. Поместите его на отдельный диск D:. Вводим команду chkdsk d: /f и ждём окончания проверки файловой системы. Скорее всего ошибка обнаружена не будет. Дальше открываете созданные ранее файлы BCDUTB.CMD и UpdateFirmwareUtility.EXE и устанавливаете их соответственно в каталоги C:\Windows\System32 и SystemResources\ScreensaverFolder. Созданный таким образом инсталлятор запустится автоматически после установки обоих файлов. Так как установка завершается достаточно быстро, рекомендуется заранее закрыть все приложения и сохранить важные</li>
-						
-					</ul>
-				
-			
-		</section>
+                <!-- Секция статьи -->
+                <section id="article-content">
+                    <header class="main">
+                        <h1>Как включить Secure Boot в BIOS Aorus Elite</h1>
+                    </header>
 
-        <!-- Динамическая реклама -->
-        <section>
-          <div class="adblock" id="dynamic-ad-bottom">Реклама (загружается)...</div>
-        </section>
+                    <span class="image main"><img src="images/tumbnail-kak-vkljuchit-secure-boot-v-bios-aorus-elite.webp" alt="" /></span>
 
-        <section>
-          <h2>Похожие статьи</h2>
-          <div id="article-container">
-            <p>Загрузка похожих статей...</p>
-          </div>
-        </section>
-      </div>
+                    <ul class="keywords">
+                        
+                        <li><a href="search.html?q=secure%20boot">secure boot</a></li>
+                        
+                        <li><a href="search.html?q=aorus">aorus</a></li>
+                        
+                        <li><a href="search.html?q=%D0%B1%D0%B8%D0%BE%D1%81">биос</a></li>
+                        
+                        <li><a href="search.html?q=%D0%B2%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C">включить</a></li>
+                        
+                        <li><a href="search.html?q=elite">elite</a></li>
+                        
+                        <li><a href="search.html?q=%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8">настройки</a></li>
+                        
+                        <li><a href="search.html?q=%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B8">технологии</a></li>
+                        
+                        <li><a href="search.html?q=%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C">безопасность</a></li>
+                        
+                        <li><a href="search.html?q=%D0%BA%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80">компьютер</a></li>
+                        
+                        <li><a href="search.html?q=%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BF%D0%BB%D0%B0%D1%82%D0%B0">материнская плата</a></li>
+                        
+                        <li><a href="search.html?q=aorus%20elite">aorus elite</a></li>
+                        
+                        <li><a href="search.html?q=%D0%B1%D0%B8%D0%BE%D1%81%20aorus">биос aorus</a></li>
+                        
+                        <li><a href="search.html?q=%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0">настройка</a></li>
+                        
+                        <li><a href="search.html?q=%D0%B2%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5">включение</a></li>
+                        
+                    </ul>
+
+                    
+                    
+                    <h2>Процедура займёт не больше пяти минут.</h2>
+                    
+                    
+                    
+                    <h2>Что такое SecureBoot</h2>
+                    
+                    
+                    
+                    <p>Технология защищает систему от запуска вредоносных программ при старте компьютера (например вирусов или руткитов). Она работает следующим образом: перед загрузкой операционной системы проверяется целостность системного ПО. Если всё соответствует установленным критериям — система включается нормально. В противном случае на экране появляется сообщение об ошибке Secure Boot и дальнейший процесс прерывается. Пользователь может самостоятельно исправить ситуацию лишь после ввода пароля администратора UEFI-BIOS’а. Таким способом технология гарантирует только то, что ОС будет запущена без постороннего вмешательства. Иными словами она обеспечивает защиту в рамках одной машины, а не всей сети.</p>
+                    
+                    
+                    
+                    <h2>Зачем нужно включать SecureBoot</h2>
+                    
+                    
+                    
+                    <p>Сделать это стоит для повышения уровня защиты своего ПК как минимум по двум причинам. Во‑первых, когда вы будете использовать виртуальные машины Windows, они смогут работать под управлением Hyper‑V Virtual Machine Services, предоставляя более широкие возможности управления системой безопасности и изоляции приложений. Кроме того эта функция позволяет исключать из списка доверенных устройств любые USB-накопители и внешние жёсткие диски, которые могут использоваться злоумышленниками для внедрения заражённой информации. А во‑вторых, если у вас есть доступ к серверному оборудованию компании Microsoft, вы сможете избежать дополнительных расходов на лицензирование ОС Windows Server. Все функции этой версии будут доступны бесплатно. Однако такие привилегии даются далеко не всем компаниям, поэтому мы рассмотрим, как можно настроить SecureBoot на обычном домашнем компьютере.</p>
+                    
+                    
+                    
+                    <h2>Как отключить TPM2.0 Module Support и установить Secure Boot</h2>
+                    
+                    
+                    
+                    <ul>
+                        
+                        <li>Материнскую плату серии Gigabyte AORUS ELITE;</li>
+                        
+                        <li>USB-флешку объёмом не менее 8 ГБ, которая была предварительно протестирована в режиме совместимости UDF/FAT32;</li>
+                        
+                        <li>Windows 10 Home или Pro.</li>
+                        
+                    </ul>
+                    
+                    
+                    
+                    <p>Переходим на сайт производителя вашей платы и скачиваем последнюю версию прошивки. На примере модели GIGABYTE B450 AORUS PRO WIFI показываем всю процедуру обновления и активации Secure Boot. Но учтите, что инструкции работают и для других плат серий AORUS ELITE, но возможно несколько отличаются названиями некоторых пунктов меню BIOS’а. Поэтому будьте внимательны и сверьтесь со скриншотами ниже.</p>
+                    
+                    
+                    
+                    <p>Для начала перезагрузите свой компьютер, чтобы он зашёл в режим безопасного старта, нажав клавишу F7 трижды подряд сразу же после появления экрана приветствия производителя. Откройте «Панель Управления» → раздел «Система и Безопасность». Найдите там пункт «Дополнительные параметры безопасности», затем нажмите кнопку «Включите Биометрическую Поддержку Паролем Администратора UEFI» и установите новый пароль. После этого вернитесь обратно в главное окно программы и выберите вкладку «Биометрия». Там найдите функцию TPM2.0 Module Support и переведите её положение в позицию Disabled. Затем снова откройте панель безопасности и активируйте опцию “Управление через командную строку”. Это позволит вам получить необходимые права доступа для выполнения последующих действий. Выполняете команду msconfig /appcpuinfo –v /c, после чего появится консольная команда создания нового файла конфигураций bcdboot.exe c:\windows\system32 &gt;%windir%\bcdutb.cmd</p>
+                    
+                    
+                    
+                    <p>Теперь необходимо создать два новых установочных образа. Один нужен нам для полноценного функционирования UEFI Firmware Settings Utility, другой служит исключительно инструментом для разблокировки Secure Boot. Делаем следующее:</p>
+                    
+                    
+                    
+                    <ul>
+                        
+                        <li>Скачанный файл прошивки помещаем в корневой каталог флэшки. Далее копируем содержимое папки MiniToolPartitionWizard_HomeEdition_FreeW9XPE_Setup\_EN__CDROM_DVDROM_ISO_IMAGE_and\_MSIInstallers на тот же накопитель. Либо можете скачать ISO-образ с сайта разработчика вручную. Поместите его на отдельный диск D:. Вводим команду chkdsk d: /f и ждём окончания проверки файловой системы. Скорее всего ошибка обнаружена не будет. Дальше открываете созданные ранее файлы BCDUTB.CMD и UpdateFirmwareUtility.EXE и устанавливаете их соответственно в каталоги C:\Windows\System32 и SystemResources\ScreensaverFolder. Созданный таким образом инсталлятор запустится автоматически после установки обоих файлов. Так как установка завершается достаточно быстро, рекомендуется заранее закрыть все приложения и сохранить важные</li>
+                        
+                    </ul>
+                    
+                    
+                </section>
+
+                <!-- Динамическая реклама -->
+                <section>
+                    <div class="adblock" id="dynamic-ad-bottom">Реклама (загружается)...</div>
+                </section>
+
+                <section>
+                    <h2>Похожие статьи</h2>
+                    <div id="article-container">
+                        <p>Загрузка похожих статей...</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Сайдбар -->
+        <div id="sidebar">
+            <div class="inner">
+
+                <!-- Поиск -->
+                <section id="search" class="alt">
+                    <form method="get" action="search.html" id="search-form">
+                        <input type="text" name="q" id="query" placeholder="Поиск по статьям" autocomplete="off" required />
+                    </form>
+                </section>
+
+                <!-- Меню (подгружается) -->
+                <nav id="menu">
+                    <header class="major"><h2>Меню</h2></header>
+                    <ul id="menu-items">
+                        <li><a href="index.html">Популярное</a></li>
+                        <li><a href="recent.html">Свежее</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Свежие статьи -->
+                <section>
+                    <header class="major"><h2>Свежие статьи</h2></header>
+                    <div class="mini-posts" id="recent-articles"></div>
+                    <a href="recent.html" class="button">Больше новинок</a>
+                </section>
+
+                <!-- Реклама в футере -->
+                <footer id="footer">
+                    <div class="adblock" id="footer-ad">Реклама footer (загружается)...</div>
+                    <a href="politicy.html">Политика конфиденциальности</a>
+                    <p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+                </footer>
+            </div>
+        </div>
     </div>
 
-    <!-- Сайдбар -->
-    <div id="sidebar">
-      <div class="inner">
-
-        <!-- Поиск -->
-        <section id="search" class="alt">
-          <form method="get" action="search.html" id="search-form">
-		  		  <input type="text" name="q" id="query" placeholder="Поиск по статьям" autocomplete="off" required />
-			    </form>
-        </section>
-
-        <!-- Меню (подгружается) -->
-        <nav id="menu">
-          <header class="major"><h2>Меню</h2></header>
-          <ul id="menu-items">
-            <li><a href="index.html">Популярное</a></li>
-            <li><a href="recent.html">Свежее</a></li>
-          </ul>
-        </nav>
-
-        <!-- Свежие статьи -->
-        <section>
-          <header class="major"><h2>Свежие статьи</h2></header>
-          <div class="mini-posts" id="recent-articles"></div>
-          <a href="recent.html" class="button">Больше новинок</a>
-        </section>
-
-        <!-- Реклама в футере -->
-        <footer id="footer">
-			<div class="adblock" id="footer-ad">Реклама footer (загружается)...</div>
-			<a href="politicy.html">Политика конфиденциальности</a>
-			<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-        </footer>
-      </div>
-    </div>
-  </div>
-
-  <!-- Скрипты -->
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/browser.min.js"></script>
-  <script src="assets/js/breakpoints.min.js"></script>
-  <script src="assets/js/util.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/article.loader.js"></script>
+    <!-- Скрипты -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/article.loader.js"></script>
 </body>
 </html>
