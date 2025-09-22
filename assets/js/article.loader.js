@@ -54,13 +54,13 @@ function createStandardArticleBlock(data, isAd = false) {
     `;
   } else {
     section.innerHTML = `
-      <a href="${data.image}" class="image featured">
+      <a href="articles/${data.slug}.html" class="image featured">
         <img src="${data.image}" alt="">
       </a>
       <header>
         <h3>${data.title}</h3>
       </header>
-      <p>${data.excerpt}</p>
+      <p>${data.intro}</p>
       <ul class="actions">
         <li><a href="articles/${data.slug}.html" class="button">Читать</a></li>
       </ul>
