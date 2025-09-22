@@ -344,7 +344,7 @@ async function loadThemes() {
     const themes = await res.json();
 
     // look for <ul> inside menu
-    const submenu = document.querySelector("#menu-items > li:nth-child(2) ul");
+    const submenu = document.getElementById("themes-menu-item");
     if (!submenu) throw new Error("Подменю для разделов не найдено");
 
     themes.forEach(t => {
