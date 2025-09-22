@@ -44,48 +44,32 @@ function truncate(text, length = 160) {
   return text.length > length ? text.slice(0, length) + "..." : text;
 }
 
-function createStandardArticleBlock(a, withAd = true) {
-  const wrapper = document.createElement("div");
-  wrapper.className = "article-with-ad";
-  if (withAd) {
-    const ad = document.createElement("div");
-    ad.className = "adblock";
-    ad.textContent = "Реклама";
-    wrapper.appendChild(ad);
-    return wrapper;
+function createStandardArticleBlock(data, isAd = false) {
+  const section = document.createElement("section");
+
+  if (isAd) {
+    section.className = "adblock";
+    section.innerHTML = `
+      <p>Реклама 300×250</p>
+    `;
+  } else {
+    section.innerHTML = `
+      <a href="${data.image}" class="image featured">
+        <img src="${data.image}" alt="">
+      </a>
+      <header>
+        <h3>${data.title}</h3>
+      </header>
+      <p>${data.excerpt}</p>
+      <ul class="actions">
+        <li><a href="articles/${data.slug}.html" class="button">Читать</a></li>
+      </ul>
+    `;
   }
 
-  const article = document.createElement("article");
-
-  const link = document.createElement("a");
-  link.href = `images/preview-${a.slug}.webp`;
-  link.className = "image";
-  link.innerHTML = `<img src="images/preview-${a.slug}.webp" alt="">`;
-
-  const title = document.createElement("h3");
-  title.textContent = a.title;
-
-  const description = document.createElement("p");
-  description.textContent = truncate(a.intro || "Описание недоступно");
-
-  const actions = document.createElement("ul");
-  actions.className = "actions";
-  const li = document.createElement("li");
-  const btn = document.createElement("a");
-  btn.href = `articles/${a.slug}.html`;
-  btn.className = "button";
-  btn.textContent = "Читать";
-  li.appendChild(btn);
-  actions.appendChild(li);
-
-  article.appendChild(link);
-  article.appendChild(title);
-  article.appendChild(description);
-  article.appendChild(actions);
-
-  wrapper.appendChild(article);
-  return wrapper;
+  return section;
 }
+
 
 // === Загрузка названия сайта ===
 async function loadSiteName() {
@@ -123,7 +107,7 @@ async function loadSearchResultTitle() {
 
 // === Загрузка популярных ===
 async function loadPopularArticles() {
-    const container = document.querySelector("#features .row.aln-center");
+    const container = document.querySelector("#article-container");
     if (!container) return;
 
     const params = new URLSearchParams(window.location.search);
@@ -202,7 +186,7 @@ function insertLoadMoreButton(container, onClick) {
 
 // === Загрузка свежих ===
 async function loadRecentArticles() {
-    const container = document.querySelector("#features .row.aln-center");
+    const container = document.querySelector("#article-container");
     if (!container) return;
 
     const params = new URLSearchParams(window.location.search);
