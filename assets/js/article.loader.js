@@ -90,7 +90,9 @@ function createStandardArticleBlock(a, withAd = true) {
 // === Загрузка названия сайта ===
 async function loadSiteName() {
   const title = document.getElementById("site-name");
-  title.textContent = "Трендлист — свежие статьи каждый день";
+  title.textContent = "Трендлист";
+  const descr = document.getElementById("site-descr");
+  descr.textContent = "Свежие статьи каждый день"
   document.title = document.title + " | Трендлист";
 }
 
@@ -121,10 +123,9 @@ async function loadSearchResultTitle() {
 
 // === Загрузка популярных ===
 async function loadPopularArticles() {
-    const container = document.getElementById("article-container");
+    const container = document.querySelector("#features .row.aln-center");
     if (!container) return;
 
-    const itemsPerRow = getArticlesPerRow();
     const params = new URLSearchParams(window.location.search);
     const theme = params.get("theme");
 
@@ -135,53 +136,45 @@ async function loadPopularArticles() {
         .filter(id => id);
 
     const url = theme
-        ? `${api_link}random_articles?theme=${encodeURIComponent(theme)}&count=${itemsPerRow*BLOCK_BATCH_COUNT}${exceptArticles.length ? `&except_articles=${exceptArticles.join(',')}` : ''}`
-        : `${api_link}random_articles?count=${itemsPerRow*BLOCK_BATCH_COUNT}${exceptArticles.length ? `&except_articles=${exceptArticles.join(',')}` : ''}`;
+        ? `${api_link}random_articles?theme=${encodeURIComponent(theme)}&count=${BLOCK_BATCH_COUNT}${exceptArticles.length ? `&except_articles=${exceptArticles.join(',')}` : ''}`
+        : `${api_link}random_articles?count=${BLOCK_BATCH_COUNT}${exceptArticles.length ? `&except_articles=${exceptArticles.join(',')}` : ''}`;
 
     try {
         const res = await fetch(url);
         if (!res.ok) throw new Error("Не удалось загрузить статьи");
         const newArticles = await res.json();
 
-        // Добавляем новые статьи к существующим
         popularArticles = [...popularArticles, ...newArticles];
 
-        // Отрисовываем новые блоки
-        renderNextPopularBlocks(container, itemsPerRow);
+        renderNextArticlesBlocks(container, popularArticles);
     } catch (err) {
         console.error("Ошибка при загрузке статей:", err);
         container.innerHTML = "<p>Ошибка загрузки статей</p>";
     } finally {
-      const paragraphs = Array.from(container.querySelectorAll(":scope > p"));
-
-      paragraphs.forEach(p => {
-          // Если <p> не внутри блоков с классами статей
-          if (!p.closest(".posts") && !p.closest(".article-with-ad")) {
-              p.remove();
-          }
-      });
+        // Убираем "Загрузка..." если он был
+        const loadingText = container.querySelector("p");
+        if (loadingText) loadingText.remove();
     }
 }
 
-function renderNextPopularBlocks(container, itemsPerRow) {
-    const total = popularArticles.length;
-    const start = renderedIndex; // начинаем с текущего renderIndex
-    const end = Math.min(total, start + (itemsPerRow * BLOCK_BATCH_COUNT));
+function renderNextArticlesBlocks(container, targetArticles) {
+    const start = renderedIndex;
+    const end = targetArticles.length;
 
-    // Удалим старую кнопку
-    const oldButton = document.getElementById("load-more");
+    // Удаляем старую кнопку
+    const oldButton = container.querySelector("#load-more");
     if (oldButton) oldButton.remove();
 
-    // Отрисовываем пачками
-    for (let i = start; i < end; i += itemsPerRow) {
-        const row = document.createElement("div");
-        row.className = "posts";
-        for (let j = i; j < i + itemsPerRow && j < end; j++) {
-            let isAd = Math.random() > 0.8;
-            const block = createStandardArticleBlock(popularArticles[j], isAd);
-            row.appendChild(block);
-        }
-        container.appendChild(row);
+    // Добавляем статьи подряд
+    for (let i = start; i < end; i++) {
+        const col = document.createElement("div");
+        col.className = "col-4 col-6-medium col-12-small";
+
+        let isAd = Math.random() > 0.8;
+        const block = createStandardArticleBlock(targetArticles[i], isAd);
+
+        col.appendChild(block);
+        container.appendChild(col);
     }
 
     renderedIndex = end;
@@ -194,13 +187,14 @@ function renderNextPopularBlocks(container, itemsPerRow) {
 
 function insertLoadMoreButton(container, onClick) {
     const wrapper = document.createElement("div");
+    wrapper.className = "col-12";
     wrapper.style.textAlign = "center";
-    wrapper.style.margin = "2rem 0";
-    const btn = document.createElement("button");
+    const btn = document.createElement("a");
     btn.id = "load-more";
-    btn.className = "button";
+    btn.className = "button icon solid fa-file";
     btn.textContent = "Загрузить ещё";
-    btn.addEventListener("click", onClick);
+    btn.href = "#";
+    btn.addEventListener("click", e => { e.preventDefault(); onClick(); });
     wrapper.appendChild(btn);
     container.appendChild(wrapper);
 }
@@ -208,31 +202,34 @@ function insertLoadMoreButton(container, onClick) {
 
 // === Загрузка свежих ===
 async function loadRecentArticles() {
-  const container = document.getElementById("article-container");
-  if (!container) return;
+    const container = document.querySelector("#features .row.aln-center");
+    if (!container) return;
 
-  const itemsPerRow = getArticlesPerRow();
+    const params = new URLSearchParams(window.location.search);
 
-  try {
-    const res = await fetch(`${api_link}recent_articles`);
-    if (!res.ok) throw new Error("Ошибка загрузки");
-    const articles = await res.json();
-    container.innerHTML = "";
+    // Получаем ID уже отображенных статей
+    const renderedArticles = container.querySelectorAll('.article-block');
+    const exceptArticles = Array.from(renderedArticles)
+        .map(article => article.dataset.id)
+        .filter(id => id);
 
-    for (let i = 0; i < articles.length; i += itemsPerRow) {
-      const row = document.createElement("div");
-      row.className = "posts";
+    const url = `${api_link}recent_articles?count=${BLOCK_BATCH_COUNT}${exceptArticles.length ? `&except_articles=${exceptArticles.join(',')}` : ''}`;
 
-      for (let j = i; j < i + itemsPerRow && j < articles.length; j++) {
-        const block = createStandardArticleBlock(articles[j], false);
-        row.appendChild(block);
-      }
+    try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("Не удалось загрузить статьи");
+        const newArticles = await res.json();
 
-      container.appendChild(row);
+        popularArticles = [...popularArticles, ...newArticles];
+
+        renderNextArticlesBlocks(container, popularArticles);
+    } catch (err) {
+        console.error("Ошибка при загрузке статей:", err);
+        container.innerHTML = "<p>Ошибка загрузки статей</p>";
+    } finally {
+        const loadingText = container.querySelector("p");
+        if (loadingText) loadingText.remove();
     }
-  } catch (err) {
-    console.warn("Ошибка загрузки свежих статей:", err);
-  }
 }
 
 
@@ -364,14 +361,18 @@ async function loadThemes() {
     const res = await fetch(`${api_link}themes`);
     if (!res.ok) throw new Error("Темы не получены");
     const themes = await res.json();
-    const menu = document.getElementById("menu-items") || document.querySelector("#menu ul");
+
+    // look for <ul> inside menu
+    const submenu = document.querySelector("#menu-items > li:nth-child(2) ul");
+    if (!submenu) throw new Error("Подменю для разделов не найдено");
+
     themes.forEach(t => {
       const li = document.createElement("li");
       const a = document.createElement("a");
       a.href = `index.html?theme=${encodeURIComponent(t.slug)}`;
-      a.textContent = `${t.name}`;
+      a.textContent = t.name;
       li.appendChild(a);
-      menu.appendChild(li);
+      submenu.appendChild(li);
     });
   } catch (err) {
     console.warn("Ошибка загрузки тем:", err);
@@ -419,7 +420,7 @@ function insertAdBlocksInArticle() {
 // === Запуск ===
 document.addEventListener("DOMContentLoaded", () => {
   loadThemes();
-  loadRecentArticlesSidebar();
+  //loadRecentArticlesSidebar();
 
   const bodyId = document.body.id;
 
@@ -452,11 +453,11 @@ document.addEventListener("DOMContentLoaded", () => {
     loadMoreBtn.textContent = "Загрузка...";
 
     try {
-      const newArticles = await fetchMoreArticles(); // твоя функция
-      renderArticles(newArticles); // отрисуй
+      const newArticles = await fetchMoreArticles();
+      renderArticles(newArticles);
 
       if (!hasMoreArticles()) {
-        loadMoreBtn.style.display = "none"; // Спрячь, если больше нечего грузить
+        loadMoreBtn.style.display = "none";
       } else {
         loadMoreBtn.disabled = false;
         loadMoreBtn.textContent = "Загрузить ещё";
