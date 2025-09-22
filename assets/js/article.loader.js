@@ -60,7 +60,7 @@ function createStandardArticleBlock(data, isAd = false) {
       <header>
         <h3><a href="articles/${data.slug}.html">${data.title}</a></h3>
       </header>
-      <p>${data.intro}</p>
+      <p>${data.intro.slice(0, 100)}...</p>
     `;
   }
 
