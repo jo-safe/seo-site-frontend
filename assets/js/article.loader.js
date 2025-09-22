@@ -22,7 +22,7 @@ const ARTICLE_MIN_WIDTH_REM = 26; // Минимальная ширина ста�
 
 let popularArticles = [];
 let renderedIndex = 0;
-const BLOCK_BATCH_COUNT = 5;
+const BLOCK_BATCH_COUNT = 12;
 
 let similarArticles = [];
 let similarRenderedIndex = 0;
@@ -61,9 +61,6 @@ function createStandardArticleBlock(data, isAd = false) {
         <h3>${data.title}</h3>
       </header>
       <p>${data.intro}</p>
-      <ul class="actions">
-        <li><a href="articles/${data.slug}.html" class="button">Читать</a></li>
-      </ul>
     `;
   }
 
