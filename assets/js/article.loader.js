@@ -58,7 +58,7 @@ function createStandardArticleBlock(data, isAd = false) {
         <img src="${data.image}" alt="">
       </a>
       <header>
-        <h3>${data.title}</h3>
+        <h3><a href="articles/${data.slug}.html">${data.title}</a></h3>
       </header>
       <p>${data.intro}</p>
     `;
