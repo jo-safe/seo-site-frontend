@@ -107,7 +107,7 @@ async function loadSearchResultTitle() {
 
 // === Загрузка популярных ===
 async function loadPopularArticles() {
-    const container = document.querySelector("#article-container");
+    const container = document.querySelector("#features .row.aln-center");
     if (!container) return;
 
     const params = new URLSearchParams(window.location.search);
@@ -186,7 +186,7 @@ function insertLoadMoreButton(container, onClick) {
 
 // === Загрузка свежих ===
 async function loadRecentArticles() {
-    const container = document.querySelector("#article-container");
+    const container = document.querySelector("#features .row.aln-center");
     if (!container) return;
 
     const params = new URLSearchParams(window.location.search);
