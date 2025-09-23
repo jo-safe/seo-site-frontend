@@ -400,7 +400,7 @@ function insertAdBlocksInArticle() {
 
 // === Запуск ===
 document.addEventListener("DOMContentLoaded", () => {
-  loadThemes();
+  //loadThemes();
   //loadRecentArticlesSidebar();
 
   const bodyId = document.body.id;
