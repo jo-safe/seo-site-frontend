@@ -48,7 +48,7 @@ function createStandardArticleBlock(data, isAd = false) {
   const section = document.createElement("section");
 
   if (isAd) {
-    section.className = "adblock";
+    section.className = "adblock-300-250";
     section.innerHTML = `
       <p>Реклама 300×250</p>
     `;
@@ -370,7 +370,7 @@ function insertAdBlocksInArticle() {
   // Создаём HTML-рекламный блок
   function createAdBlock(text = "Реклама (заглушка)") {
     const adBlock = document.createElement("div");
-    adBlock.className = "adblock";
+    adBlock.className = "adblock-300-250";
     adBlock.textContent = text;
     adBlock.style.cssText = `
       background: #f0f0f0;
