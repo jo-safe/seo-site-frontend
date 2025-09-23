@@ -71,11 +71,22 @@ function createStandardArticleBlock(data, isAd = false) {
 // === Загрузка названия сайта ===
 async function loadSiteName() {
   const title = document.getElementById("site-name");
-  title.textContent = "Трендлист";
+  const link = title.querySelector("a");
+
+  if (link) {
+    // если ссылка уже есть — меняем только её текст
+    link.textContent = "Трендлист";
+  } else {
+    // если ссылки нет — создаём её заново
+    title.innerHTML = '<a href="index.html">Трендлист</a>';
+  }
+
   const descr = document.getElementById("site-descr");
-  descr.textContent = "Свежие статьи каждый день"
+  descr.textContent = "Свежие статьи каждый день";
+
   document.title = document.title + " | Трендлист";
 }
+
 
 // === Загрузка заглавия странцы ===
 async function loadPageHeading() {
