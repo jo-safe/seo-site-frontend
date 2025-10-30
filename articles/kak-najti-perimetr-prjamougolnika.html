@@ -1,0 +1,318 @@
+<!DOCTYPE HTML>
+<!--
+	Strongly Typed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+	(function (m, e, t, r, i, k, a) {
+		m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+		m[i].l = 1 * new Date();
+		for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+		k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+	})(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=103931187', 'ym');
+
+	ym(103931187, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", accurateTrackBounce: true, trackLinks: true });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/103931187" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-V3QJEQ91HP"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-V3QJEQ91HP');
+	</script>
+	<!-- Top.Mail.Ru counter -->
+	<script type="text/javascript">
+		var _tmr = window._tmr || (window._tmr = []);
+		_tmr.push({ id: "3702438", type: "pageView", start: (new Date()).getTime() });
+		(function (d, w, id) {
+			if (d.getElementById(id)) return;
+			var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+			ts.src = "https://top-fwz1.mail.ru/js/code.js";
+			var f = function () { var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s); };
+			if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+		})(document, window, "tmr-code");
+	</script>
+	<noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3702438;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+	<!-- /Top.Mail.Ru counter -->
+	<base href="/">
+	<title>Как найти периметр прямоугольника</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="left-sidebar is-preload" id="article-page">
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<section id="header">
+			<div class="container">
+
+				<!-- Nav -->
+				<nav id="nav">
+					<ul id="menu-items">
+						<li><b><a href="index.html?theme=life">ОБРАЗ ЖИЗНИ</a></b></li>
+						<li><b><a href="index.html?theme=work">РАБОТА И УЧЁБА</a></b></li>
+						<li><b><a href="index.html?theme=lifehacks">СОВЕТЫ И ЛАЙФХАКИ</a></b></li>
+						<li><b><a href="index.html?theme=devices">ГАДЖЕТЫ И УСТРОЙСТВА</a></b></li>
+						<li><b><a href="index.html?theme=technologies">ТЕХНОЛОГИИ И ИНТЕРНЕТ</a></b></li>
+						<li><b><a href="index.html?theme=food">ЕДА И ДОМ</a></b></li>
+						<br>
+						<li><b><a href="index.html?theme=sport">СПОРТ И ЗДОРОВЬЕ</a></b></li>
+						<li><b><a href="index.html?theme=travelling">ПУТЕШЕСТВИЯ</a></b></li>
+						<li><b><a href="index.html?theme=auto">АВТО</a></b></li>
+						<li><b><a href="index.html?theme=art">РАЗВЛЕЧЕНИЯ И ИСКУССТВО</a></b></li>
+						<li><b><a href="index.html?theme=law">ПРАВО И ФИНАНСЫ</a></b></li>
+						<li><b><a href="index.html?theme=news">НОВОСТИ</a></b></li>
+					</ul>
+				</nav>
+				<br>
+				<!-- Logo -->
+				<h1 id="site-name"><a href="index.html">Трендлист</a></h1>
+				<p id="site-descr">Свежие статьи каждый день</p>
+
+			</div>
+		</section>
+
+		<!-- Main -->
+		<section id="main">
+			<div class="container">
+				<div class="row">
+					<!-- Sidebar -->
+					<div id="sidebar" class="col-4 col-12-medium">
+						<section>
+							<ul class="divided">
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+							</ul>
+						</section>
+					</div>
+
+
+					<!-- Content -->
+					<div id="content" class="col-8 col-12-medium imp-medium">
+						<!-- Post -->
+						<article class="box post">
+							<header>
+								<h2>Как найти периметр прямоугольника</h2>
+							</header>
+
+							<span class="image featured"><img src="images/tumbnail-kak-najti-perimetr-prjamougolnika.webp" alt="" /></span>
+
+							<ul class="keywords">
+								
+							</ul>
+
+							
+							
+							<h3>Неудобно? Вырезаем и пересчитываем!</h3>
+							
+							
+							
+							<p>В школьном учебнике по математике есть таблица со всеми возможными вариантами разложения на множители чисел. На самом деле она там не нужна — для вычисления площади любого квадрата можно воспользоваться формулой a × b, где a, b — стороны фигуры. Но вот как посчитать периметр без таблицы — это уже интереснее. Для этого нужно знать несколько простых правил. И если вам надо быстро вычислить длину забора вокруг сада или площадь спортивной площадки в парке, то лучше всего подойдут методы №2 и №3.</p>
+							
+							
+							
+							<h2>Метод №1: Перемножаем все числа вместе</h2>
+							
+							
+							
+							<ul>
+								
+								<li>Вычислите произведение всех сторон прямоугольной фигуры;</li>
+								
+								<li>разделите результат на два (используя правило деления). Получите значение половины периметра;</li>
+								
+								<li>умножьте полученное число на два, чтобы получить полное значение длины ограды.</li>
+								
+								<li>Пример: Периметр прямоугольного участка земли размером 4 м x 7 м равен ((4 + 7) × 2 = 22) метра. А окружность пруда длиной 9 метров и шириной 18 метров равна (((9 + 18) / 2) × 2 = 36) метра.</li>
+								
+								<li>Это самый простой способ рассчитать периметр любой прямоугольной формы. Однако он подходит только тогда, когда размеры известны точно. Если же одна из граней неизвестна, придётся прибегать к другим методам. Зато они могут пригодиться тем, кто занимается рукоделием или дизайном интерьера, потому что позволяют определить размер фигур без измерения их размеров линейкой. Например, так можно сделать «выкружную» рамку для картины или выбрать ткань подходящего размера под шитье одежды. Вот подробная инструкция по каждому способу.</li>
+								
+							</ul>
+							
+							
+							
+							<h2>Как понять, какой метод использовать?</h2>
+							
+							
+							
+							<ul>
+								
+								<li>Если задан один лишь внешний контур прямоугольника, а внутренние границы его частей неизвестны, выбирайте первый вариант. Он позволяет узнать размер самой большой внешней фигуры. Чтобы упростить задачу, можно предварительно разделить её на части меньшего размера. Так проще будет определять значения каждой грани отдельно. Главное здесь — помнить о правиле умножения/деления, которое поможет избежать ошибки.</li>
+								
+								<li>Когда у вас перед глазами находится сложная геометрическая конструкция, состоящая из нескольких пересекающихся прямоугольников, попробуйте второй вариант. Этот способ предполагает последовательное измерение длин отдельных участков фигуры, которые лежат вдоль одной линии. К примеру, представьте себе дом, который состоит из двух одинаковых прямоугольных комнат. Сначала найдите общую сторону этих помещений, затем оставшиеся внешние грани, соедините всё между собой и получите ответ.</li>
+								
+								<li>Третий метод хорош, когда известно расстояние от одного края прямоугольника до другого. Это может случиться, например, во время ремонта. Нужно выяснить, сколько рубероида понадобится для покрытия крыши дома, но нет ни сантиметров, ни рулетки. Узнаём высоту здания методом проб и ошибок, определяем необходимый материал исходя из этой величины. Помните, что этот способ работает только при условии абсолютной параллельности линий относительно друг друга.</li>
+								
+								<li>Загологоловок: Как найти периметр прямоугольника?</li>
+								
+							</ul>
+							
+							
+							
+							<p>Описанные выше способы помогут решить любую подобную задачу. Поэтому читатель должен понимать, почему нельзя просто взять любые две соседние точки внутри заданной фигуры, соединить их прямой линией и объявить получившийся отрезок частью перил. Потому что такие действия противоречат самому понятию прямоугольника. Следовательно, такой подход тоже неправильный.</p>
+							
+							
+							
+							<p>Вместе с этим стоит признаться, что некоторые учителя геометрии используют третий способ даже с очень простыми задачами вроде определения количества ткани для создания штор. Они считают, что таким образом дети быстрее усваивают суть операции расчёта расстояний, которую потом им предстоит выполнять самостоятельно. Возможно, именно поэтому иногда вместо стандартного вопроса “Найди периметр” учитель просит ученика ответить на вопрос “Сколько материала тебе потребуется?”</p>
+							
+							
+							
+							<p>Мы рекомендуем всегда проверять свои ответы с помощью первого метода — он даёт возможность убедиться в том, правильно ли подошли к решению задачи и какое количество материалов необходимо приобрести заранее. Особенно важно пользоваться первым способом, когда речь идёт о больших суммах денег — ведь лишняя покупка обойдется гораздо дороже неизмеримости.</p>
+							
+							
+							
+							<p>*Дебатт.Ру</p>
+							
+							
+							
+							<p>Материал опубликован против воли автора Franz Müller-Müller © www.muller-mueller.de</p>
+							
+							
+							
+							<p>Статья опубликована в рамках проекта «Игры разума».</p>
+							
+							
+							
+							<p>Что</p>
+							
+							
+						</article>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<section id="footer">
+			<div id="copyright" class="container">
+				<ul class="links">
+					<li>&copy; Untitled. All rights reserved.</li>
+					<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					<li><a href="politicy.html">Политика конфиденциальности</a></li>
+					<br>
+					<li>Вся информация на сайте носит справочный характер и не является публичной офертой, определяемой статьей 437 ГК РФ</li>
+					<br>
+					<!-- Yandex.Metrika informer -->
+					<a href="https://metrika.yandex.ru/stat/?id=103931187&amp;from=informer" target="_blank" rel="nofollow">
+						<img src="https://informer.yandex.ru/informer/103931187/3_0_FFFFFFFF_FFFFFFFF_0_pageviews"
+							 style="width:88px; height:31px; border:0;"
+							 alt="Яндекс.Метрика"
+							 title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" />
+					</a>
+					<!-- /Yandex.Metrika informer -->
+				</ul>
+			</div>
+		</section>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.dropotron.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/article.loader.js"></script>
+
+</body>
+</html>

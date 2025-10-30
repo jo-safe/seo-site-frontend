@@ -1,0 +1,379 @@
+<!DOCTYPE HTML>
+<!--
+	Strongly Typed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+	(function (m, e, t, r, i, k, a) {
+		m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+		m[i].l = 1 * new Date();
+		for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+		k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+	})(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=103931187', 'ym');
+
+	ym(103931187, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", accurateTrackBounce: true, trackLinks: true });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/103931187" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-V3QJEQ91HP"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-V3QJEQ91HP');
+	</script>
+	<!-- Top.Mail.Ru counter -->
+	<script type="text/javascript">
+		var _tmr = window._tmr || (window._tmr = []);
+		_tmr.push({ id: "3702438", type: "pageView", start: (new Date()).getTime() });
+		(function (d, w, id) {
+			if (d.getElementById(id)) return;
+			var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+			ts.src = "https://top-fwz1.mail.ru/js/code.js";
+			var f = function () { var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s); };
+			if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+		})(document, window, "tmr-code");
+	</script>
+	<noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3702438;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+	<!-- /Top.Mail.Ru counter -->
+	<base href="/">
+	<title>Как определить площадь и периметр треугольника со сторонами 1</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="left-sidebar is-preload" id="article-page">
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<section id="header">
+			<div class="container">
+
+				<!-- Nav -->
+				<nav id="nav">
+					<ul id="menu-items">
+						<li><b><a href="index.html?theme=life">ОБРАЗ ЖИЗНИ</a></b></li>
+						<li><b><a href="index.html?theme=work">РАБОТА И УЧЁБА</a></b></li>
+						<li><b><a href="index.html?theme=lifehacks">СОВЕТЫ И ЛАЙФХАКИ</a></b></li>
+						<li><b><a href="index.html?theme=devices">ГАДЖЕТЫ И УСТРОЙСТВА</a></b></li>
+						<li><b><a href="index.html?theme=technologies">ТЕХНОЛОГИИ И ИНТЕРНЕТ</a></b></li>
+						<li><b><a href="index.html?theme=food">ЕДА И ДОМ</a></b></li>
+						<br>
+						<li><b><a href="index.html?theme=sport">СПОРТ И ЗДОРОВЬЕ</a></b></li>
+						<li><b><a href="index.html?theme=travelling">ПУТЕШЕСТВИЯ</a></b></li>
+						<li><b><a href="index.html?theme=auto">АВТО</a></b></li>
+						<li><b><a href="index.html?theme=art">РАЗВЛЕЧЕНИЯ И ИСКУССТВО</a></b></li>
+						<li><b><a href="index.html?theme=law">ПРАВО И ФИНАНСЫ</a></b></li>
+						<li><b><a href="index.html?theme=news">НОВОСТИ</a></b></li>
+					</ul>
+				</nav>
+				<br>
+				<!-- Logo -->
+				<h1 id="site-name"><a href="index.html">Трендлист</a></h1>
+				<p id="site-descr">Свежие статьи каждый день</p>
+
+			</div>
+		</section>
+
+		<!-- Main -->
+		<section id="main">
+			<div class="container">
+				<div class="row">
+					<!-- Sidebar -->
+					<div id="sidebar" class="col-4 col-12-medium">
+						<section>
+							<ul class="divided">
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+								<li>
+									<article class="box excerpt">
+										<!-- Рекламный код Яндекса -->
+										<div class="adblock-300-250">
+											<p>Реклама 300×250</p>
+										</div>
+									</article>
+								</li>
+								
+							</ul>
+						</section>
+					</div>
+
+
+					<!-- Content -->
+					<div id="content" class="col-8 col-12-medium imp-medium">
+						<!-- Post -->
+						<article class="box post">
+							<header>
+								<h2>Как определить площадь и периметр треугольника со сторонами 1</h2>
+							</header>
+
+							<span class="image featured"><img src="images/tumbnail-kak-opredelit-ploschad-i-perimetr-treugolnika-so-storonami-1.webp" alt="" /></span>
+
+							<ul class="keywords">
+								
+							</ul>
+
+							
+							
+							<h3>Мы разберёмся в этом на примерах для разных типов треугольников.</h3>
+							
+							
+							
+							<h2>Как найти сторону треугольника по его площади</h2>
+							
+							
+							
+							<p>Это возможно только если у вас есть дополнительные данные о фигуре — например, что она является равносторонней или прямоугольной. Тогда вы сможете применить формулу Герона, чтобы вычислить длину стороны. Для этого нужно знать лишь значения площадей двух других сторон (или хотя бы одной). Если же у вас нет этой информации, то задачу решить будет невозможно.</p>
+							
+							
+							
+							<ul>
+								
+								<li>Для начала определите два известных вам размера сторон a и b. Умножьте их друг на друга:</li>
+								
+								<li>a × b = c;</li>
+								
+								<li>Найдите квадрат получившегося числа:</li>
+								
+								<li>c² = d;</li>
+								
+								<li>Вычислите корень из полученного результата:</li>
+								
+								<li>√d = e;</li>
+								
+								<li>Площадь треугольника можно выразить через две известные величины так:</li>
+								
+								<li>e = √(3ab);</li>
+								
+								<li>если известны размеры углов A и B, где угол C равен 90°;</li>
+								
+								<li>√(2(b/4 + ab) − b²) / 8 = f,</li>
+								
+								<li>где f — величина высоты h, проведённая к гипотенузе. В таком случае длина второй стороны равна:</li>
+								
+								<li>h * sinA = g,</li>
+								
+								<li>g = √((f)²+(1−cosC)(1+cosC));</li>
+								
+								<li>отсюда мы можем получить размер третьей стороны:</li>
+								
+								<li>k = r*sinB;</li>
+								
+								<li>а затем длины всех трёх сторен треугольника:</li>
+								
+								<li>a = k*(1-r),</li>
+								
+								<li>b = k*(1+r),</li>
+								
+								<li>c = k*(1+r)+(1-r)*(1-r)*2i*sqrt(2)/2.</li>
+								
+								<li>Если задан какой‑либо другой тип фигуры, необходимо использовать соответствующие свойства и теоремы. Например, для равностороннего треугольника подойдут такие уравнения:</li>
+								
+								<li>S=a²×cot(π/(n+2)), n≥2, а также S=(p×q×l)/(2·pq), q ≥ p &gt; l, где l — самая большая сторона, p &lt; q ≤ l. А для любого другого вида подобных фигур потребуется комбинация этих методов вместе с дополнительными данными об углах между сторонами и т. д.</li>
+								
+								<li>Здесь важно понимать: без дополнительных данных задача не решается. Помните это! Вы можете посчитать длину основания и высоту, но они могут принимать бесконечное число значений. Поэтому нельзя точно узнать значение любой стороны.</li>
+								
+							</ul>
+							
+							
+							
+							<h2>Как определить площадь и периметр квадрата со стороной 1</h2>
+							
+							
+							
+							<p>Площадь: Сторону умножьте саму себя — получится 1. Периметр: Сумма длин всех четырёх сторон. Поскольку все равные между собой, берём одно измерение и умножаем на четыре. Тоже получается 4.</p>
+							
+							
+							
+							<p>Квадрат обладает рядом полезных свойств: он самый компактный геометрический объект среди тех, которые имеют одинаковую площадь. И ещё один интересный факт — плотность упаковки клеток во вразумительном масштабе всегда максимальна, когда клетки являются кубами. Также существует множество интересных математических задач, связанных именно с этим типом объектов. Вот некоторые примеры: раскраска графа, задачи теории игр вроде «борьбы за территорию» или алгоритмы компрессии данных.</p>
+							
+							
+							
+							<p>Конечно, интересным может показаться любая другая форма, поэтому давайте рассмотрим её тоже.</p>
+							
+							
+							
+							<h2>Как определить площадь и периметр многоугольника со стороной 1</h2>
+							
+							
+							
+							<p>Многогранники бывают регулярными и неправильными. Первое слово означает, что все стороны абсолютно идентичны, второе говорит само за себя. Во втором варианте у нас уже ничего непонятного остаётся. Просто сложите сумму всех сторон и получите ответ. Или же найдите каждую отдельную грань как часть целого объекта, а потом пересчитайте результат. Всё зависит от того, насколько велика сложность формы.</p>
+							
+							
+							
+							<p>Ну и наконец несколько слов о том, почему вообще стоит изучать подобные вещи. Все эти понятия связаны с очень важными аспектами человеческой деятельности: архитектурой зданий, планированием городов, дизайном вебсайтов и приложений, аналитикой маркетинговых кампаний… Список далеко не полный. Знания геометрии нужны везде вокруг нас, просто иногда мы даже не осознаём этого сами. Особенно активно используются знания про многоугольники в играх. Так что учитесь на них играть, ведь кто знает, сколько применений имеет ваш любимый шутер?</p>
+							
+							
+						</article>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<section id="footer">
+			<div id="copyright" class="container">
+				<ul class="links">
+					<li>&copy; Untitled. All rights reserved.</li>
+					<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					<li><a href="politicy.html">Политика конфиденциальности</a></li>
+					<br>
+					<li>Вся информация на сайте носит справочный характер и не является публичной офертой, определяемой статьей 437 ГК РФ</li>
+					<br>
+					<!-- Yandex.Metrika informer -->
+					<a href="https://metrika.yandex.ru/stat/?id=103931187&amp;from=informer" target="_blank" rel="nofollow">
+						<img src="https://informer.yandex.ru/informer/103931187/3_0_FFFFFFFF_FFFFFFFF_0_pageviews"
+							 style="width:88px; height:31px; border:0;"
+							 alt="Яндекс.Метрика"
+							 title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" />
+					</a>
+					<!-- /Yandex.Metrika informer -->
+				</ul>
+			</div>
+		</section>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.dropotron.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/article.loader.js"></script>
+
+</body>
+</html>
